@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_adopted"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment"
+        android:label="@string/title_adopted"
+        tools:layout="@layout/fragment_adopted" />
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.FavouritesFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourites" />
+    <fragment
+        android:id="@+id/navigation_publication"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.PublicationFragment"
+        android:label="@string/title_publication"
+        tools:layout="@layout/fragment_publication" />
+</navigation>
