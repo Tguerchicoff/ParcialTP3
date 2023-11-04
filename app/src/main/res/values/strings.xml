@@ -14,4 +14,6 @@
     <string name="config_fragment">Configuracion</string>
     <string name="nav_open">Abierto</string>
     <string name="nav_close">Cerrado</string>
+    <string name="pref_cat_setting">Generales</string>
+    <string name="switch_night_mode">Modo Oscuro</string>
 </resources>

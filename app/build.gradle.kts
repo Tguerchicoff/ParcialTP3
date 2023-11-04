@@ -81,6 +81,10 @@ dependencies {
     implementation ("androidx.room:room-ktx:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    //Settings
+    implementation("androidx.preference:preference:1.2.0")
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 
