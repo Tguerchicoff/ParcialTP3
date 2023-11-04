@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setSupportActionBar(binding.toolbar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.dog_paw)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.location)
+
         val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.nav_open, R.string.nav_close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -71,6 +75,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+
+        when (fragment) {
+            is HomeFragment -> supportActionBar?.title = "Inicio"
+            is PublicationFragment -> supportActionBar?.title = "Publicación"
+            is AdoptedFragment -> supportActionBar?.title = "Adoptados"
+            is FavouritesFragment -> supportActionBar?.title = "Favoritos"
+            else -> supportActionBar?.title = ""
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
