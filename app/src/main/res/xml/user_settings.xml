@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:singleLineTitle="true">
+
+    <PreferenceCategory
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="@string/pref_cat_setting"
+        app:key="preference_category"
+        app:singleLineTitle="true">
+
+    </PreferenceCategory>
+    <SwitchPreference
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="false"
+        android:title="@string/switch_night_mode"
+        app:key="night_mode" />
+</PreferenceScreen>

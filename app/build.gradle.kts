@@ -82,10 +82,16 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
 
+    //Settings
+    implementation("androidx.preference:preference:1.2.0")
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
+
     // retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.google.code.gson:gson:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
