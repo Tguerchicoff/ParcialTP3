@@ -1,5 +1,6 @@
 package com.ort.edu.ar.parcialtp3.Holder
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,13 +8,25 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.R
 import com.bumptech.glide.Glide
+import com.ort.edu.ar.parcialtp3.entities.Dog
 
 class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     private var view: View
 
+       fun render (dog: Dog){
+
+           setName(dog.name)
+           setBreed(dog.breed)
+           setSubBreed(dog.subBreed)
+           setAge(dog.age)
+           setGender(dog.gender)
+           setImage(dog.urlImage1)
+    }
+
     init {
         this.view = v
     }
+
 
     fun setName(name: String) {
         val txt: TextView = view.findViewById(R.id.txtCardName)
@@ -40,11 +53,12 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
         txt.text = gender
     }
 
-    fun setImage(imageUrl: String){
+    fun setImage(imageUrl1: String){
         val imageView: ImageView = view.findViewById(R.id.imageView)
         Glide.with(view.context)
-            .load(imageUrl)
+            .load(imageUrl1)
             .into(imageView)
+
     }
 
     fun getCardLayout (): CardView {

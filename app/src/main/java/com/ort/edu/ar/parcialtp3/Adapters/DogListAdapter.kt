@@ -24,14 +24,7 @@ class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), p
     override fun onBindViewHolder(holder: DogHolder, position: Int) {
 
         val dog = dogsList[position]
-
-        holder.setName(dog.name)
-        holder.setBreed(dog.breed)
-        holder.setSubBreed(dog.subBreed)
-        holder.setAge(dog.age)
-        holder.setGender(dog.gender)
-        holder.setImage(dog.urlImage1)
-
+       holder.render(dog)
 
         holder.getCardLayout().setOnClickListener{
             onItemClick.onViewItemDetail(dog)

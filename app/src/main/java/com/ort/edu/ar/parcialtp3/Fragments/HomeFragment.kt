@@ -15,7 +15,6 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 
 class HomeFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var dogListAdapter: DogListAdapter
-    lateinit var view2: View
     lateinit var recDogs : RecyclerView
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -25,20 +24,19 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         savedInstanceState: Bundle?
     ): View {
 
-        view2 = inflater.inflate(R.layout.fragment_home, container, false)
-        recDogs = view2.findViewById(R.id.rec_dogs)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        recDogs = view.findViewById(R.id.rec_dogs)
 
-        return view2
+        return view
     }
     override fun onStart() {
         super.onStart()
-        val list = DogProvider.dogList.toMutableList()
+        val dogList = DogProvider.dogList.toMutableList()
 
         requireActivity()
         recDogs.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
-        dogListAdapter = DogListAdapter(list, this)
-
+        dogListAdapter = DogListAdapter(dogList, this)
         recDogs.layoutManager = linearLayoutManager
         recDogs.adapter = dogListAdapter
 

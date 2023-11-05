@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
+    android:layout_gravity="center_horizontal"
     android:visibility="visible"
     app:cardBackgroundColor="#2196F3"
+    app:cardCornerRadius="5dp"
     tools:visibility="visible">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="343dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:background="#AC1B1B"
         android:baselineAlignBottom="true"
         tools:image="sample/avatars" />
 
@@ -93,7 +94,7 @@
                 android:id="@+id/txtCardGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="right"
                 android:textSize="17sp"
                 tools:text="Macho o Hembra" />
         </LinearLayout>
