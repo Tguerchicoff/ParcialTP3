@@ -15,9 +15,6 @@ import com.ort.edu.ar.parcialtp3.databinding.FragmentHomeBinding
 
 class FakeLoginFragment : Fragment() {
     private var _binding: FragmentFakeLoginBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,12 +23,8 @@ class FakeLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentFakeLoginBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.fakeLoginTitle
-
-        return root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_welcome_screen, container, false)
     }
 
     override fun onDestroyView() {

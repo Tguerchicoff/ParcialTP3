@@ -11,5 +11,10 @@
     <string name="config_fragment">Configuracion</string>
     <string name="nav_open">Abierto</string>
     <string name="nav_close">Cerrado</string>
-    <string name="fake_login_description">Por favor, ingrese su nombre:</string>
+    <string name="btnWelcome">Comenzar Ahora!</string>
+    <string name="titleWelcome">Adopción de Perritos</string>
+    <string name="textWelcome">Haz tu vida más feliz con nuestra ayuda para tener nuevas mascotas</string>
+    <string name="titleFakeLogin">Ingrese su nombre:</string>
+    <string name="name">Nombre</string>
+
 </resources>
