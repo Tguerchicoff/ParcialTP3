@@ -8,22 +8,40 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ort.edu.ar.parcialtp3.R
+import com.ort.edu.ar.parcialtp3.databinding.FragmentWelcomeScreenBinding
 
 class WelcomeScreenFragment : Fragment() {
+    private var _binding: FragmentWelcomeScreenBinding? = null
+
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_welcome_screen, container, false)
+        _binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false)
 
-        val btnWelcome = v.findViewById<Button>(R.id.btnWelcome)
+        val root: View = binding.root
+
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val btnWelcome = view.findViewById<Button>(R.id.btnWelcome)
 
         btnWelcome.setOnClickListener {
-            // Configura la acción de navegación
-            findNavController().navigate(R.id.action_welcomeScreenFragment_to_fakeLoginFragment)
+            // Realizar la transacción para mostrar FakeLoginFragment
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView3, FakeLoginFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
+    }
 
-        return v
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

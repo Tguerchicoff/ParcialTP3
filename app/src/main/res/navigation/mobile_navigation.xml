@@ -44,4 +44,18 @@
         android:name="com.ort.edu.ar.parcialtp3.Fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/welcomeScreenFragment2"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.WelcomeScreenFragment"
+        android:label="fragment_welcome_screen"
+        tools:layout="@layout/fragment_welcome_screen" >
+        <action
+            android:id="@+id/action_welcomeScreenFragment2_to_fakeLoginFragment2"
+            app:destination="@id/fakeLoginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fakeLoginFragment2"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.FakeLoginFragment"
+        android:label="fragment_fake_login"
+        tools:layout="@layout/fragment_fake_login" />
 </navigation>
