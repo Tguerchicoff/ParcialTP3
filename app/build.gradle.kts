@@ -85,6 +85,18 @@ dependencies {
     implementation ("androidx.room:room-ktx:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+
+    //Settings
+    implementation("androidx.preference:preference:1.2.0")
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
+
+    // retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.google.code.gson:gson:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 
@@ -93,10 +105,11 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
 }
 
 kapt {

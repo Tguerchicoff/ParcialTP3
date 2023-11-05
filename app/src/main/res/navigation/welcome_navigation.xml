@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_navigation"
+    app:startDestination="@id/welcomeScreenFragment">
+
+    <fragment
+        android:id="@+id/welcomeScreenFragment"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.WelcomeScreenFragment"
+        android:label="fragment_welcome_screen"
+        tools:layout="@layout/fragment_welcome_screen" >
+        <action
+            android:id="@+id/action_welcomeScreenFragment_to_fakeLoginFragment"
+            app:destination="@id/fakeLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fakeLoginFragment"
+        android:name="com.ort.edu.ar.parcialtp3.Fragments.FakeLoginFragment"
+        android:label="fragment_fake_login"
+        tools:layout="@layout/fragment_fake_login" />
+</navigation>

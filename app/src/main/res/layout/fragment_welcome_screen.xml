@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.WelcomeScreenFragment">
+
+    <Button
+        android:id="@+id/btnWelcome"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="105dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/btnWelcome"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titleFakeLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/poppins_black"
+        android:text="@string/titleWelcome"
+        android:textColor="@color/grey"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textInit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textInit"
+        android:layout_width="331dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/textWelcome"
+        android:textColor="@color/ligthGrey"
+        app:layout_constraintBottom_toTopOf="@+id/btnWelcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/titleFakeLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/dachshund_dog" />
+</androidx.constraintlayout.widget.ConstraintLayout>
