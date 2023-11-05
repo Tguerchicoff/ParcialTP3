@@ -96,6 +96,12 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 
+    //Picasso for images
+    implementation("com.squareup.picasso:picasso:2.8")
+
+    //Coroutines for async calls
+    implementation("com.google.android.libraries.sdkcoroutines:sdkcoroutines:1.0.0")
+
     implementation ("com.android.support:multidex:1.0.3")
 
     testImplementation("junit:junit:4.13.2")

@@ -5,6 +5,7 @@ import com.ort.edu.ar.parcialtp3.Model.RandomImageAPIResponse
 import com.ort.edu.ar.parcialtp3.Model.RandomImagesAPIResponse
 import com.ort.edu.ar.parcialtp3.Model.SubBreedImagesAPIResponse
 import com.ort.edu.ar.parcialtp3.Model.SubBreedsAPIResponse
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.Response
 import retrofit2.http.Path
@@ -18,15 +19,15 @@ interface DogApiService {
     fun getRandomImage(): Response<RandomImageAPIResponse>
 
     @GET("breeds/image/random/{count}")
-    fun getRandomImages(@Path("count") count: Int): Response<RandomImagesAPIResponse>
+    fun getRandomImages(@Path("count") count: Int): Call<RandomImagesAPIResponse>
 
     //By breed
     @GET("breed/{breed}/images")
-    fun getImagesForBreed(@Path("breed") breed: String): Response<SubBreedImagesAPIResponse>
+    fun getImagesForBreed(@Path("breed") breed: String): Call<RandomImagesAPIResponse>
     @GET("breed/{breed}/images/random")
-    fun getRandomHoundImage(): Response<RandomImageAPIResponse>
-    @GET("breed/{breed}/images/random/{count}")
-    fun getRandomHoundImages(@Path("count") count: Int): Response<RandomImagesAPIResponse>
+    fun getRandomBreedImage(@Path("breed") breed: String): Response<RandomImageAPIResponse>
+    @GET("breed/{breed}/images/random/3")
+    fun getThreeRandomBreedImages(@Path("breed") breed: String): Call<RandomImagesAPIResponse>
 
     //By sub-breed
     @GET("breed/{breed}/list")
