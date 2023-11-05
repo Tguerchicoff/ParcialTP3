@@ -16,5 +16,8 @@
     <string name="textWelcome">Haz tu vida más feliz con nuestra ayuda para tener nuevas mascotas</string>
     <string name="titleFakeLogin">Ingrese su nombre:</string>
     <string name="name">Nombre</string>
+    <string name="pref_cat_setting">Generales</string>
+    <string name="switch_night_mode">Modo Oscuro</string>
+
 
 </resources>
