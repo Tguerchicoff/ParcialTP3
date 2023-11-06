@@ -13,6 +13,7 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 
 class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     private var view: View
+    private var favoriteCheckBox: CheckBox? = null
 
        fun render (dog: Dog){
 
@@ -24,10 +25,18 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
            setImage(dog.urlImage1)
            setFavorite(dog.isFavorite)
            setAdopted(dog.isAdopted)
+
+
+           // Configurar el OnCheckedChangeListener para el CheckBox de "Favorito"
+           favoriteCheckBox?.setOnCheckedChangeListener { _, isChecked ->
+               dog.isFavorite = isChecked
+               Log.e("perrito", dog.toString())
+           }
     }
 
     init {
         this.view = v
+        favoriteCheckBox = v.findViewById(R.id.checkBoxFav)
     }
 
 
@@ -65,7 +74,7 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     }
 
     fun setFavorite(boolean: Boolean){
-        val isFavorite: CheckBox = view.findViewById(R.id.checkBoxFav)
+        var isFavorite: CheckBox = view.findViewById(R.id.checkBoxFav)
         isFavorite.isChecked = boolean
     }
 

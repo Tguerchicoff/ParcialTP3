@@ -14,8 +14,10 @@ data class Dog(
     val weight: Double,
     val location: String,
     val urlImage1: String,
-    val urlImage2: String,
-    val caregiversName: String,
+    val urlImage2: String?,
+    val urlImage3: String?,
+    val detail: String?,
+    val caregiversName: String?,
     val isAdopted: Boolean,
-    val isFavorite: Boolean
+    var isFavorite: Boolean
 )
