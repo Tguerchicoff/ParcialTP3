@@ -11,6 +11,7 @@
     app:cardCornerRadius="5dp"
     tools:visibility="visible">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -100,5 +101,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBoxFav"
+        android:layout_width="66dp"
+        android:layout_height="72dp"
+        android:button="@drawable/checkbox_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.cardview.widget.CardView>
