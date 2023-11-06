@@ -2,6 +2,7 @@ package com.ort.edu.ar.parcialtp3.Holder
 
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -21,6 +22,8 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
            setAge(dog.age)
            setGender(dog.gender)
            setImage(dog.urlImage1)
+           setFavorite(dog.isFavorite)
+           setAdopted(dog.isAdopted)
     }
 
     init {
@@ -61,7 +64,16 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
             .into(imageView)
     }
 
+    fun setFavorite(boolean: Boolean){
+        val isFavorite: CheckBox = view.findViewById(R.id.checkBoxFav)
+        isFavorite.isChecked = boolean
+    }
+
+    fun setAdopted(boolean: Boolean){
+    }
+
     fun getCardLayout (): CardView {
         return view.findViewById(R.id.card)
     }
+
 }

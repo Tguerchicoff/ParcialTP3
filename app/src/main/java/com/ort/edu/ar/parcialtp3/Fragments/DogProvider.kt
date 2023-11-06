@@ -4,6 +4,35 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 
 class DogProvider {
     companion object{
+
+        fun getAllDogs(): List<Dog> {
+            return dogList
+        }
+
+        fun getFavoriteDogs(): List<Dog> {
+            return dogList.filter { it.isFavorite && !it.isAdopted }
+        }
+
+        fun getAdoptedDogs(): List<Dog> {
+            return dogList.filter { it.isAdopted }
+        }
+
+        fun toggleFavoriteStatus(dog: Dog) {
+            val index = dogList.indexOf(dog)
+            if (index != -1) {
+                val updatedDog = dogList[index].copy(isFavorite = !dog.isFavorite)
+                dogList[index] = updatedDog
+            }
+        }
+
+        fun toggleAdoptedStatus(dog: Dog) {
+            val index = dogList.indexOf(dog)
+            if (index != -1) {
+                val updatedDog = dogList[index].copy(isAdopted = !dog.isAdopted)
+                dogList[index] = updatedDog
+            }
+        }
+
         val dogList : MutableList<Dog> = mutableListOf(
             Dog(
                 "Mambo",
@@ -65,7 +94,7 @@ class DogProvider {
                 "https://scontent.faep9-2.fna.fbcdn.net/v/t1.18169-9/10670240_10205416238627368_6228580445516569846_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=4dc865&_nc_eui2=AeGb8WklRiZmwIYbYw3bnYY3q4zgZCTb4OKrjOBkJNvg4oYTfqPj3ng1yti2yD-Z5aw&_nc_ohc=AnwuFqtPwpQAX973raE&_nc_ht=scontent.faep9-2.fna&oh=00_AfCQGek5xLvqkB6mkC4OXzH8UdN4jmaFZ_dCfP_dOOSvxA&oe=656E13F0",
                 "Pato",
                 false,
-                false
+                true
 
             ),
             Dog(
@@ -81,8 +110,9 @@ class DogProvider {
                 "https://scontent.faep9-2.fna.fbcdn.net/v/t1.18169-9/10670240_10205416238627368_6228580445516569846_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=4dc865&_nc_eui2=AeGb8WklRiZmwIYbYw3bnYY3q4zgZCTb4OKrjOBkJNvg4oYTfqPj3ng1yti2yD-Z5aw&_nc_ohc=AnwuFqtPwpQAX973raE&_nc_ht=scontent.faep9-2.fna&oh=00_AfCQGek5xLvqkB6mkC4OXzH8UdN4jmaFZ_dCfP_dOOSvxA&oe=656E13F0",
                 "Pato",
                 false,
-                false
+                true
             )
         )
     }
+
 }

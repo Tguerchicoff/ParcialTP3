@@ -31,7 +31,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     }
     override fun onStart() {
         super.onStart()
-        val dogList = DogProvider.dogList.toMutableList()
+        val dogList = DogProvider.getAllDogs().toMutableList()
 
         requireActivity()
         recDogs.setHasFixedSize(true)
