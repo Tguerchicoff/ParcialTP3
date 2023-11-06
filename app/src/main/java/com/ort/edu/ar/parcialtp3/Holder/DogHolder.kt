@@ -57,8 +57,8 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
         val imageView: ImageView = view.findViewById(R.id.imageView)
         Glide.with(view.context)
             .load(imageUrl1)
+            .fitCenter()
             .into(imageView)
-
     }
 
     fun getCardLayout (): CardView {
