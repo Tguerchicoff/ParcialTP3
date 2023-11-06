@@ -12,6 +12,7 @@
     <string name="nav_open">Abierto</string>
     <string name="nav_close">Cerrado</string>
     <string name="btnWelcome">Comenzar Ahora!</string>
+    <string name="btnUploadPhoto">Subir Foto</string>
     <string name="titleWelcome">Adopción de Perritos</string>
     <string name="textWelcome">Haz tu vida más feliz con nuestra ayuda para tener nuevas mascotas</string>
     <string name="titleFakeLogin">Ingrese su nombre:</string>
