@@ -40,31 +40,25 @@ class WelcomeScreenFragment : Fragment() {
         val btnWelcome = view.findViewById<Button>(R.id.btnWelcome)
 
         GlobalScope.launch(Dispatchers.IO){
-        val breeds = arrayListOf("borzoi", "pitbull", "keeshond")
+            val breeds = arrayListOf("bulldog", "bullterrier", "spaniel");
+            val subBreeds = arrayListOf("french", "staffordshire", "cocker")
+            var subBreedsIndex = 0
 
             for (breed in breeds){
-                val response = dogApiService.getThreeRandomBreedImages(breed).execute()
-
+                val response = dogApiService.getThreeRandomSubBreedImages(breed, subBreeds.get(subBreedsIndex)).execute()
+                subBreedsIndex+=1
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
                         dogImagesList.addAll(body.message)
-
                     }
                 }
 
             }
-            requireActivity().runOnUiThread {
-                // Muestra la primera imagen en un ImageView
-                if (dogImagesList.isNotEmpty()) {
-                    val imageView = view.findViewById<ImageView>(R.id.imageView2)
-                    Glide.with(this@WelcomeScreenFragment)
-                        .load(dogImagesList[8])
-                        .into(imageView)
-                }
-            }
-
+            //PARA MOSTRAR LAS FOTOS DE LOS PERROS: dogImagesList[0] - dogImagesList[8]. 3 son de cada raza.
         }
+
+
 
         btnWelcome.setOnClickListener {
             // Realizar la transacción para mostrar FakeLoginFragment

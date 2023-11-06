@@ -41,7 +41,7 @@ interface DogApiService {
 
     @GET("breed/{breed}/{subBreed}/images/random/{count}")
     fun getRandomImagesForSubBreed(@Path("subBreed") subBreed: String, @Path("count") count: Int): Response<RandomImagesAPIResponse>
-    @GET("breed/{breed}/images/random/3")
-    fun getThreeRandomBreedImages(@Path("breed") breed: String): Call<RandomImagesAPIResponse>
+    @GET("breed/{breed}/{subBreed}/images/random/3")
+    fun getThreeRandomSubBreedImages(@Path("breed") breed: String, @Path("subBreed") subBreed: String): Call<RandomImagesAPIResponse>
 
 }
