@@ -1,19 +1,28 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.ort.edu.ar.parcialtp3.R
+import com.ort.edu.ar.parcialtp3.Services.ActivityServiceApiBuilder
 import com.ort.edu.ar.parcialtp3.databinding.FragmentWelcomeScreenBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class WelcomeScreenFragment : Fragment() {
     private var _binding: FragmentWelcomeScreenBinding? = null
 
     private val binding get() = _binding!!
+    private val dogApiService = ActivityServiceApiBuilder.create()
+    private val dogImagesList = ArrayList<String>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,11 +40,38 @@ class WelcomeScreenFragment : Fragment() {
 
         val btnWelcome = view.findViewById<Button>(R.id.btnWelcome)
 
+        GlobalScope.launch(Dispatchers.IO){
+            val breeds = arrayListOf("bulldog", "borzoi", "spaniel")
+            val subBreeds = arrayListOf("french", null, "cocker")
+
+            for (i in breeds.indices) {
+                val breed = breeds[i]
+                val subBreed = subBreeds.getOrNull(i) // Obtén la subraza correspondiente o null si no existe
+
+                val response = if (subBreed != null && subBreed.isNotEmpty()) {
+                    dogApiService.getThreeRandomSubBreedImages(breed, subBreed).execute()
+                } else {
+                    dogApiService.getThreeRandomBreedImages(breed).execute()
+                }
+
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) {
+                        dogImagesList.addAll(body.message)
+                    }
+                }
+            }
+        }
+
+
+
+
         btnWelcome.setOnClickListener {
             // Realizar la transacción para mostrar FakeLoginFragment
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView3, FakeLoginFragment())
             transaction.addToBackStack(null)
+            Log.e("Lista de fotos", dogImagesList.toString())
             transaction.commit()
         }
     }
