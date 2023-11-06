@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.google.android.material.navigation.NavigationView
 import com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment
@@ -33,9 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         updateNavHeader()
         setSupportActionBar(binding.toolbar)
@@ -127,5 +128,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         startActivity(intent)
         finish()
     }
-
 }

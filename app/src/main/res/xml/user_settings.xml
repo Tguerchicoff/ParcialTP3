@@ -4,6 +4,12 @@
     app:singleLineTitle="true">
 
     <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="      ">
+
+    </PreferenceCategory>
+    <PreferenceCategory
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:title="@string/pref_cat_setting"
@@ -16,5 +22,5 @@
         android:layout_height="wrap_content"
         android:defaultValue="false"
         android:title="@string/switch_night_mode"
-        app:key="night_mode" />
+        app:key="switch_mode" />
 </PreferenceScreen>
