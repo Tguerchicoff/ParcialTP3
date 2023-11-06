@@ -34,8 +34,7 @@ class AdoptedFragment : Fragment(), OnViewItemClickedListener {
     }
     override fun onStart() {
         super.onStart()
-        val dogList = DogProvider.dogList.toMutableList()
-
+        val dogList = DogProvider.getAdoptedDogs().toMutableList()
         requireActivity()
         recDogs.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)

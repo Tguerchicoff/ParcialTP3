@@ -30,7 +30,7 @@ class FavouritesFragment : Fragment(), OnViewItemClickedListener {
     }
     override fun onStart() {
         super.onStart()
-        val dogList = DogProvider.dogList.toMutableList()
+        val dogList = DogProvider.getFavoriteDogs().toMutableList()
 
         requireActivity()
         recDogs.setHasFixedSize(true)

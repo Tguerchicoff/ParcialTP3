@@ -11,7 +11,7 @@ import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.entities.Dog
 import com.ort.edu.ar.parcialtp3.R
 
-class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), private val onItemClick: OnViewItemClickedListener
+class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), private val onItemClick: OnViewItemClickedListener,
 ):RecyclerView.Adapter<DogHolder>() {
 
     override fun getItemCount() =dogsList.size
@@ -30,10 +30,9 @@ class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), p
             onItemClick.onViewItemDetail(dog)
         }
     }
-    fun updateData(newData: List<Dog>) {
-        dogList.clear()
-        dogList.addAll(newData)
-
+    fun updateDogList(newDogList: List<Dog>) {
+        dogsList.clear()
+        dogsList.addAll(newDogList)
         notifyDataSetChanged()
     }
 

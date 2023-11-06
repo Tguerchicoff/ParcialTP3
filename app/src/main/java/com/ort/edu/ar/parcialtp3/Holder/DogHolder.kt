@@ -2,6 +2,7 @@ package com.ort.edu.ar.parcialtp3.Holder
 
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -12,6 +13,7 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 
 class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     private var view: View
+    private var favoriteCheckBox: CheckBox? = null
 
        fun render (dog: Dog){
 
@@ -21,10 +23,20 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
            setAge(dog.age)
            setGender(dog.gender)
            setImage(dog.urlImage1)
+           setFavorite(dog.isFavorite)
+           setAdopted(dog.isAdopted)
+
+
+           // Configurar el OnCheckedChangeListener para el CheckBox de "Favorito"
+           favoriteCheckBox?.setOnCheckedChangeListener { _, isChecked ->
+               dog.isFavorite = isChecked
+               Log.e("perrito", dog.toString())
+           }
     }
 
     init {
         this.view = v
+        favoriteCheckBox = v.findViewById(R.id.checkBoxFav)
     }
 
 
@@ -61,7 +73,16 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
             .into(imageView)
     }
 
+    fun setFavorite(boolean: Boolean){
+        var isFavorite: CheckBox = view.findViewById(R.id.checkBoxFav)
+        isFavorite.isChecked = boolean
+    }
+
+    fun setAdopted(boolean: Boolean){
+    }
+
     fun getCardLayout (): CardView {
         return view.findViewById(R.id.card)
     }
+
 }
