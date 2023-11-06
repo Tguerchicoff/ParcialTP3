@@ -27,7 +27,15 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recDogs = view.findViewById(R.id.rec_dogs)
 
+
+        val textView: TextView = binding.textHome
+        homeViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+
+
         return view
+
     }
     override fun onStart() {
         super.onStart()

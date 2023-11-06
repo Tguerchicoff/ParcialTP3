@@ -20,6 +20,7 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.navigation.NavigationView
 import com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment
+import com.ort.edu.ar.parcialtp3.Fragments.DetailsFragment
 import com.ort.edu.ar.parcialtp3.Fragments.FavouritesFragment
 import com.ort.edu.ar.parcialtp3.Fragments.HomeFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ProfileFragment
@@ -51,10 +52,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
 
+
         val btnLogout = findViewById<Button>(R.id.logout)
         btnLogout.setOnClickListener {
             handleLogout()
         }
+
 
         binding.bottomNavigation.background = null
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -69,7 +72,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
-
     }
 
     override fun onBackPressed() {
