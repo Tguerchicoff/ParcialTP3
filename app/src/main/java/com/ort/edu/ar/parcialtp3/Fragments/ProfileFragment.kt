@@ -46,8 +46,8 @@ class ProfileFragment : Fragment() {
         }
 
         if (this.activity is MainActivity) {
-            val cosa : MainActivity = activity as MainActivity
-            cosa.loadImageFromStorage(_binding.imViewProfile)
+            val mainActivity : MainActivity = activity as MainActivity
+            mainActivity.loadImageFromStorage(_binding.imViewProfile)
         }
 
         return _binding.root
@@ -65,8 +65,13 @@ class ProfileFragment : Fragment() {
                 _binding.imViewProfile.setImageURI(imageUri)
 
                 // TODO: check deprecated
-                // TODO: viewmodel also will update MainActivity nav_header
                 saveToInternalStorage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri))
+
+                // TODO: viewmodel also will update MainActivity nav_header
+                if (this.activity is MainActivity) {
+                    val mainActivity : MainActivity = activity as MainActivity
+                    mainActivity.loadImageFromStorage(_binding.imViewProfile)
+                }
 
 //                // TODO: Check extension
 //                val toCheckTypes = imageUri.toFile().absoluteFile.toString().split("/")
