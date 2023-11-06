@@ -30,7 +30,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="25dp"
             android:text="Hola!"
-            android:textColor="@color/black"
+            android:textColor="@color/grey"
             android:textSize="16dp" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:paddingLeft="10dp"
             android:paddingBottom="32dp"
             android:text="Usuario"
-            android:textColor="@color/black"
+            android:background="@color/white"
             android:textSize="24dp" />
     </LinearLayout>
 

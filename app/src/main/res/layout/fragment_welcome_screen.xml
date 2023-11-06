@@ -13,6 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="105dp"
         android:fontFamily="sans-serif-medium"
+        android:background="@color/white"
         android:text="@string/btnWelcome"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
