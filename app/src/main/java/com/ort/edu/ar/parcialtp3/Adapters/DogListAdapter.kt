@@ -25,7 +25,6 @@ class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), p
 
         val dog = dogsList[position]
        holder.render(dog)
-
         holder.getCardLayout().setOnClickListener{
             onItemClick.onViewItemDetail(dog)
         }

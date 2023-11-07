@@ -19,6 +19,7 @@
     <string name="localization">Ubicacion</string>
     <string name="owner">Dueño</string>
     <string name="btnWelcome">Comenzar Ahora!</string>
+    <string name="btnUploadPhoto">Subir Foto</string>
     <string name="titleWelcome">Adopción de Perritos</string>
     <string name="textWelcome">Haz tu vida más feliz con nuestra ayuda para tener nuevas mascotas</string>
     <string name="titleFakeLogin">Ingrese su nombre:</string>

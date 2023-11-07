@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.ParcialTP3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">#673AB7</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/green</item>
@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:toolbarStyle">?attr/colorPrimary</item>
+        <item name="android:toolbarStyle">@color/purple_200</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:backgroundTint">@color/black</item>
         <!-- Customize your theme here. -->

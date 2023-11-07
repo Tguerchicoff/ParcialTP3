@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_header_view"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -8,14 +10,35 @@
     android:background="@color/white"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/padding"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:gravity="right"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:src="@drawable/user_logged"></ImageView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/config_profile_photo"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="250dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="250dp">
+
+                <ImageView
+                    android:id="@+id/padding"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Profile Image"/>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +53,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="25dp"
             android:text="Hola!"
-            android:textColor="@color/black"
+            android:textColor="@color/grey"
             android:textSize="16dp" />
 
         <TextView
@@ -42,7 +65,7 @@
             android:paddingLeft="10dp"
             android:paddingBottom="32dp"
             android:text="Usuario"
-            android:textColor="@color/black"
+            android:background="@color/white"
             android:textSize="24dp" />
     </LinearLayout>
 

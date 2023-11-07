@@ -1,14 +1,16 @@
 package com.ort.edu.ar.parcialtp3.Activities
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -28,6 +30,9 @@ import com.ort.edu.ar.parcialtp3.Fragments.ProfileFragment
 import com.ort.edu.ar.parcialtp3.Fragments.PublicationFragment
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.databinding.ActivityMainBinding
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -112,20 +117,46 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView = findViewById<NavigationView>(R.id.navigation_drawer)
         val navHeader = navigationView.getHeaderView(0) // Asegúrate de ajustar el índice si tienes varios elementos en el header
         val textViewName = navHeader.findViewById<TextView>(R.id.UserName)
+        val padding = navHeader.findViewById<ImageView>(R.id.padding)
 
         // Obtén el nombre del usuario de SharedPreferences
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
         val userName = sharedPreferences.getString("user_name", "Usuario")
-
         // Configura el nombre del usuario en el TextView del nav_header
-
         textViewName.text = userName
+
+        loadImageFromStorage(padding)
+    }
+
+    public fun loadImageFromStorage(imageView: ImageView) {
+        // https://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
+
+        try {
+            val cw = ContextWrapper(this)
+            // path to /data/data/yourapp/app_data/imageDir
+            val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
+            val f = File(directory, "profile.jpg")
+            val b = BitmapFactory.decodeStream(FileInputStream(f))
+
+            imageView.setImageBitmap(b)
+        } catch (e: FileNotFoundException) {
+//            e.printStackTrace()
+            // Si no hay imagen guardada, ponemos la imagen por defecto
+            imageView.setImageResource(R.drawable.user_logged)
+        }
     }
 
     private fun handleLogout() {
         // Redirigir a WelcomeScreenActivity y borrar el user_name de SharedPreferences
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         sharedPreferences.edit().remove("user_name").apply()
+
+        // Borrar la imagen de perfil
+        val cw = ContextWrapper(this)
+        val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
+        val f = File(directory, "profile.jpg")
+        f.delete()
 
         val intent = Intent(this, WelcomeScreenActivity::class.java)
         startActivity(intent)
