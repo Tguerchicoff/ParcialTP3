@@ -48,6 +48,8 @@ class ProfileFragment : Fragment() {
         if (this.activity is MainActivity) {
             val mainActivity : MainActivity = activity as MainActivity
             mainActivity.loadImageFromStorage(_binding.imViewProfile)
+            val sharedPreferences = mainActivity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+            _binding.tvProfilename.setText(sharedPreferences.getString("user_name", ""))
         }
 
         return _binding.root

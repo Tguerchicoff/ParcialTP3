@@ -10,9 +10,10 @@
         android:id="@+id/config_profile_photo"
         android:layout_width="175dp"
         android:layout_height="175dp"
+        android:layout_marginTop="180dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvProfilename"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,6 +34,17 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/tvProfilename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/btnUploadPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/config_profile_photo" />
+
     <Button
         android:id="@+id/btnUploadPhoto"
         android:layout_width="wrap_content"
@@ -40,7 +52,7 @@
         android:text="@string/btnUploadPhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/config_profile_photo"
-        android:layout_marginTop="50dp"/>
+        app:layout_constraintTop_toBottomOf="@id/tvProfilename"
+        android:layout_marginTop="25dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
