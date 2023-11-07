@@ -95,6 +95,7 @@
                                 android:layout_width="86dp"
                                 android:layout_height="40dp"
                                 android:layout_weight="0"
+                                android:background="@color/white"
                                 android:text="Home"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />

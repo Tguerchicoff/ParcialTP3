@@ -80,27 +80,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         openFragment(HomeFragment())
     }
 
-    override fun onBackPressed() {
-        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.getOnBackPressedDispatcher().onBackPressed()
-        }
-    }
-
-    private fun openFragment(fragment: Fragment){
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-
+    private fun updateToolbarAndNavHeader(fragment: Fragment) {
         when (fragment) {
             is HomeFragment -> supportActionBar?.title = "Inicio"
             is PublicationFragment -> supportActionBar?.title = "Publicación"
             is AdoptedFragment -> supportActionBar?.title = "Adoptados"
             is FavouritesFragment -> supportActionBar?.title = "Favoritos"
+            is ProfileFragment -> supportActionBar?.title = "Perfil"
             else -> supportActionBar?.title = ""
         }
+        updateNavHeader() // Actualizar el nombre en el encabezado de navegación
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            val fragment = fragmentManager.findFragmentById(R.id.fragment_container)
+            updateToolbarAndNavHeader(fragment!!)
+            super.onBackPressed()
+        }
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+
+        updateToolbarAndNavHeader(fragment)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
