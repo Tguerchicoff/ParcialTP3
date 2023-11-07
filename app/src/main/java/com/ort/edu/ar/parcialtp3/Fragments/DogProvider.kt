@@ -17,9 +17,13 @@ class DogProvider {
             return dogList.filter { it.isAdopted }
         }
 
+        fun addDog(dog: Dog) {
+            dogList.add(dog)
+        }
 
-
-
+        fun getLocations(): List<String>{
+            return locationsList
+        }
 
         fun toggleFavoriteStatus(dog: Dog) {
             val index = dogList.indexOf(dog)
@@ -127,6 +131,14 @@ class DogProvider {
                 true
             )
         )
+        val locationsList: MutableList<String> = mutableListOf(
+            "CABA",
+            "Buenos Aires, Zona Norte",
+            "Buenos Aires, Zona Sur",
+            "Buenos Aires, Zona Oeste"
+        )
     }
+
+
 
 }
