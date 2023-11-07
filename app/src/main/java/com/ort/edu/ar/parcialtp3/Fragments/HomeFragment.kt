@@ -56,8 +56,8 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         val provinceValues = Provinces.values().map { it.name }.toMutableList()
 
         // Agrega el hint vacío en la posición 0
-        genderValues.add(0, "SEXO")
-        provinceValues.add(0, "UBI")
+        genderValues.add(0, "TODOS")
+        provinceValues.add(0, "TODOS")
 
         val genderAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genderValues)
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -157,7 +157,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
                     breedList.sort()
 
                     // Agregar una entrada en blanco o "Seleccione una raza" al principio de la lista
-                    breedList.add(0, "RAZA")
+                    breedList.add(0, "TODOS")
 
                     // Configura el adaptador del Spinner con las razas reales
                     val breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, breedList)
