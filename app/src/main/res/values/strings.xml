@@ -18,6 +18,8 @@
     <string name="name">Nombre</string>
     <string name="pref_cat_setting">Generales</string>
     <string name="switch_night_mode">Modo Oscuro</string>
+    <string name="cargarImagenes">Cargar Imagenes</string>
+    <string name="publicar">Publicar</string>
 
 
 </resources>

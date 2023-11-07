@@ -15,14 +15,14 @@
         android:id="@+id/spinner_subraza"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinner_raza"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_raza" />
 
     <!-- Campo de Nombre -->
 
@@ -66,45 +66,55 @@
 
     <ImageView
         android:id="@+id/image_upload_2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/dog_paw"
+        app:layout_constraintEnd_toStartOf="@+id/image_upload_3"
         app:layout_constraintStart_toEndOf="@+id/image_upload_1"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
 
     <ImageView
         android:id="@+id/image_upload_1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/dog_paw"
-        app:layout_constraintStart_toStartOf="@+id/edit_text_descripcion"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
 
     <ImageView
         android:id="@+id/image_upload_3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
         android:src="@drawable/dog_paw"
-        app:layout_constraintEnd_toEndOf="@+id/edit_text_descripcion"
-        app:layout_constraintStart_toEndOf="@+id/image_upload_2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
+
+    <Button
+        android:id="@+id/btn_cargar_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="110dp"
+        android:text="@string/cargarImagenes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_enviar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="152dp"
-        android:text="Publicar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_upload_2" />
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="110dp"
+        android:text="@string/publicar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/edit_text_peso"
