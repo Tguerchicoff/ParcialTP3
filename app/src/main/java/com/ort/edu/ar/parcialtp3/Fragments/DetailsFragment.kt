@@ -1,60 +1,124 @@
 package com.ort.edu.ar.parcialtp3.Fragments
-
+import android.content.Context
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.ort.edu.ar.parcialtp3.ImagePagerAdapter
 import com.ort.edu.ar.parcialtp3.R
+import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var viewPager: ViewPager2
+    private lateinit var imageList: List<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_details, container, false)
+        val dog = arguments?.getSerializable("dog") as Dog
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+        val bottomAppBar = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
+        bottomAppBar.visibility = View.GONE
+        val buttonBack = view.findViewById<Button>(R.id.buttonBack)
+        val adoptButton = view.findViewById<Button>(R.id.buttonAdopt)
+        val checkBoxFav = view.findViewById<CheckBox>(R.id.checkBoxFav)
+
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("user_name", "Usuario")
+        viewPager = view.findViewById(R.id.detailsFgViewPager)
+        imageList = listOf(R.drawable.dachshund_dog, R.drawable.dog_paw, R.drawable.chat)
+
+
+        val adapter = ImagePagerAdapter(listOf(dog.urlImage1, dog.urlImage2, dog.urlImage3))
+        viewPager.adapter = adapter
+
+        val phoneImageView = view.findViewById<ImageView>(R.id.detailsFgPhoneImageView)
+
+
+        // OnClickListener para abrir el panel de llamada
+        phoneImageView.setOnClickListener {
+            val phoneNumber = "123456789" // Harcodeado
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            startActivity(intent)
+        }
+
+        adoptButton.setOnClickListener {
+            showAdoptionConfirmation(dog)
+            bottomAppBar.visibility = View.VISIBLE
+            val fragmentManager = (view.context as AppCompatActivity).supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, AdoptedFragment()) // Reemplaza R.id.fragmentContainer con el ID de tu contenedor de fragmentos de inicio
+            fragmentTransaction.addToBackStack(null) // Agrega la transacción a la pila de retroceso si lo deseas
+            fragmentTransaction.commit()
+        }
+        ///
+        checkBoxFav.isChecked = dog.isFavorite
+        checkBoxFav.setOnCheckedChangeListener { _, isChecked ->
+            DogProvider.toggleFavoriteStatus(dog)
+        }
+        buttonBack.setOnClickListener {
+           // findNavController().navigate(R.id.action_detailsFragment_to_navigation_home)
+            bottomAppBar.visibility = View.VISIBLE
+            val fragmentManager = (view.context as AppCompatActivity).supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, HomeFragment()) // Reemplaza R.id.fragmentContainer con el ID de tu contenedor de fragmentos de inicio
+            fragmentTransaction.addToBackStack(null) // Agrega la transacción a la pila de retroceso si lo deseas
+            fragmentTransaction.commit()
+       }
+
+
+        fun updateDogDetails(dog: Dog) {
+            view?.findViewById<TextView>(R.id.detailsFgTextViewNombre)?.text = dog.name
+            view?.findViewById<TextView>(R.id.detailsFgTextViewLocalization)?.text = dog.location
+            view?.findViewById<TextView>(R.id.detailsFgTextViewEdad)?.text = dog.age.toString()
+            view?.findViewById<TextView>(R.id.detailsFgTextViewSex)?.text = dog.gender
+            view?.findViewById<TextView>(R.id.detailsFgTextVieWeight)?.text = dog.weight.toString()
+            view?.findViewById<TextView>(R.id.detailsFgTextVieText)?.text = dog.description
+            view?.findViewById<TextView>(R.id.detailsFgTextVieNameOwner)?.text = userName
+            view?.findViewById<TextView>(R.id.detailsFgTextViewBreed)?.text = dog.breed
+        }
+
+        updateDogDetails(dog)
+        return view
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+    //AGREGO
+    private fun showAdoptionConfirmation(dog: Dog) {
+        val congratulationsMessage = "¡Felicidades! Has adoptado a ${dog.name}."
+        Toast.makeText(requireContext(), congratulationsMessage, Toast.LENGTH_LONG).show()
+
+        // Agrego el perro a la lista getAdoptedDogs
+        DogProvider.toggleAdoptedStatus(dog)
+        // Elimino el perro de la lista getAllDogs
+        DogProvider.removeFromAllDogs(dog)
     }
 }

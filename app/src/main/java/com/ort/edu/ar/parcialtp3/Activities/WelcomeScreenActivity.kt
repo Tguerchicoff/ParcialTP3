@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentManager
-import androidx.preference.PreferenceManager
 import com.ort.edu.ar.parcialtp3.Fragments.FakeLoginFragment
 import com.ort.edu.ar.parcialtp3.Fragments.WelcomeScreenFragment
 import com.ort.edu.ar.parcialtp3.R
