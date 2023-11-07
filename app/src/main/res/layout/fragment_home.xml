@@ -6,30 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_dogs"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="73dp"
-        android:foregroundGravity="center"
-        app:data="@{HomeFragment}"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Agregar el SearchView -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Agregar el primer Spinner (DropDownList) -->
+
+    <!-- Agregar el segundo Spinner (DropDownList) -->
+
+    <!-- Agregar el tercer Spinner (DropDownList) -->
+
+    <!-- Agregar el RecyclerView -->
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
+
+    <Spinner
+        android:id="@+id/spinnerSexo"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner1"
+        app:layout_constraintStart_toEndOf="@+id/spinnerRaza"
+        app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
+
+    <Spinner
+        android:id="@+id/spinnerRaza"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_dogs"
+        android:layout_width="382dp"
+        android:layout_height="547dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSexo" />
+
+    <TextView
+        android:id="@+id/filterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/filtros"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
