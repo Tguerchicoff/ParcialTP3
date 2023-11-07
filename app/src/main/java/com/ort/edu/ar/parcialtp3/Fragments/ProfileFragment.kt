@@ -1,56 +1,123 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ort.edu.ar.parcialtp3.R
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import com.ort.edu.ar.parcialtp3.Activities.MainActivity
+import com.ort.edu.ar.parcialtp3.databinding.FragmentProfileBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var _binding: FragmentProfileBinding
+//    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        _binding.btnUploadPhoto.setOnClickListener {
+
+            val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
+            chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
+            chooseFile.type = "image/*"
+
+            resultLauncher.launch(chooseFile)
+        }
+
+        if (this.activity is MainActivity) {
+            val mainActivity : MainActivity = activity as MainActivity
+            mainActivity.loadImageFromStorage(_binding.imViewProfile)
+            val sharedPreferences = mainActivity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+            _binding.tvProfilename.setText(sharedPreferences.getString("user_name", ""))
+        }
+
+        return _binding.root
+    }
+
+
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            val data: Intent? = result.data
+
+            data?.let {
+                val imageUri = Uri.parse(data.data.toString())
+
+                _binding.imViewProfile.setImageURI(imageUri)
+
+                // TODO: check deprecated
+                saveToInternalStorage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri))
+
+                // TODO: viewmodel also will update MainActivity nav_header
+                if (this.activity is MainActivity) {
+                    val mainActivity : MainActivity = activity as MainActivity
+                    mainActivity.loadImageFromStorage(_binding.imViewProfile)
+                }
+
+//                // TODO: Check extension
+//                val toCheckTypes = imageUri.toFile().absoluteFile.toString().split("/")
+//                if (toCheckTypes.isNotEmpty()) {
+//                    val filename = toCheckTypes[toCheckTypes.size-1]
+//                    val extension = filename.drop(filename.lastIndexOf("."))
+//
+//                    println("extension $extension")
+//
+//                    if (listOf("JPG", "jpg", "JPEG", "jpeg", "PNG", "png").contains(extension)) {
+//                        _binding.imViewProfile.setImageURI(imageUri)
+//                        saveToInternalStorage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri))
+//                    }
+//                }
+
+            }
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    private fun saveToInternalStorage(bitmapImage: Bitmap): String? {
+        // https://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
+
+        val cw = ContextWrapper(this.context)
+        // path to /data/data/yourapp/app_data/imageDir
+        val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
+        // Create imageDir
+        val mypath = File(directory, "profile.jpg")
+        var fos: FileOutputStream? = null
+
+        try {
+            fos = FileOutputStream(mypath)
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                fos!!.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+
+        return directory.absolutePath
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic fun newInstance(param1: String, param2: String) =
-                ProfileFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
-    }
 }
