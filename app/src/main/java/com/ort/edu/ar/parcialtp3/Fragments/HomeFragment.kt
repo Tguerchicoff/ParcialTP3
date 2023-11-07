@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.entities.Dog
-
 
 class HomeFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var dogListAdapter: DogListAdapter
@@ -27,12 +30,10 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recDogs = view.findViewById(R.id.rec_dogs)
 
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
+       // val textView: TextView = binding.textHome
+        // homeViewModel.text.observe(viewLifecycleOwner) {
+        //     textView.text = it
+        // }
 
         return view
 
@@ -51,7 +52,18 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
    }
 
     override fun onViewItemDetail(dog: Dog) {
+        val detailsFragment = DetailsFragment()
 
+        val bundle = Bundle()
+        bundle.putSerializable("dog", dog)
+        detailsFragment.arguments = bundle
+
+        // Reemplazar el contenido actual del fragmento principal con el fragmento de detalles
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, detailsFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
 

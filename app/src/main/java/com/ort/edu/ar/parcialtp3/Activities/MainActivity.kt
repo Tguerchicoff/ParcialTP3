@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,7 +17,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.preference.PreferenceManager
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.navigation.NavigationView
 import com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment
@@ -33,11 +34,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentManager: FragmentManager
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         updateNavHeader()
         setSupportActionBar(binding.toolbar)

@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-class ImagePagerAdapter (private val imageList: List<Int>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
+import com.bumptech.glide.Glide
+
+class ImagePagerAdapter (private val imageUrls: List<String?>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
@@ -13,16 +15,23 @@ class ImagePagerAdapter (private val imageList: List<Int>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.bind(imageList[position])
+        val imageUrl = imageUrls[position]
+        holder.bind(imageUrl)
     }
 
     override fun getItemCount(): Int {
-        return imageList.size
+        return imageUrls.size
     }
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(imageResId: Int) {
-            itemView.findViewById<ImageView>(R.id.imageView).setImageResource(imageResId)
+        private val imageView = itemView.findViewById<ImageView>(R.id.imageView)
+
+        fun bind(imageUrl: String?) {
+            imageUrl?.let {
+                Glide.with(itemView)
+                    .load(imageUrl)
+                    .into(imageView)
+            }
         }
     }
 }
