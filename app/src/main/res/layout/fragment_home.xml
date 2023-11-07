@@ -7,24 +7,21 @@
     tools:context=".Fragments.HomeFragment">
 
     <!-- Agregar el SearchView -->
-    <androidx.appcompat.widget.SearchView
+
+    <AutoCompleteTextView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Agregar el primer Spinner (DropDownList) -->
-
-    <!-- Agregar el segundo Spinner (DropDownList) -->
-
-    <!-- Agregar el tercer Spinner (DropDownList) -->
-
-    <!-- Agregar el RecyclerView -->
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Ingrese la raza a buscar"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        />
 
     <Spinner
         android:id="@+id/spinner1"

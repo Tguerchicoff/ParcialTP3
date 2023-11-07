@@ -5,6 +5,28 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 class DogProvider {
     companion object{
 
+        fun filterDogs(gender: String?, province: String?, breed: String?): List<Dog> {
+            // Inicialmente, todos los perros están en la lista de resultados
+            var filteredDogs = getAllDogs() .toList()
+
+            if (gender != null) {
+                // Filtrar por género
+                filteredDogs = filteredDogs.filter { it.gender == gender }
+            }
+
+            if (province != null) {
+                // Filtrar por provincia
+                filteredDogs = filteredDogs.filter { it.location == province }
+            }
+
+            if (breed != null) {
+                // Filtrar por raza
+                filteredDogs = filteredDogs.filter { it.breed == breed }
+            }
+
+            return filteredDogs
+        }
+
         fun getAllDogs(): List<Dog> {
             return dogList.filter{ !it.isAdopted}
         }
@@ -46,7 +68,7 @@ class DogProvider {
                 "Mestizo",
                 "Boyero de Berna",
                 11,
-                "Macho",
+                "Hembra",
                 "Mambo es un encantador perrito encontrado en la calle en malas condiciones. Luego de meses de veterinario esta 100% recuperado. Su pelaje suave como algodón y sus ojos tiernos te conquistarán al instante. Es un compañero leal y cariñoso que busca un hogar lleno de amor y cuidado. Le encanta pasear por el parque, jugar con su pelota y recibir caricias. Con su energía contagiosa y su naturaleza juguetona, teofrecerá compañía incondicional..",
                 29.75,
                 "Bs. As.",
@@ -81,7 +103,7 @@ class DogProvider {
                 "Mestizo",
                 "Boyero de Berna",
                 11 ,
-                "Macho",
+                "Hembra",
                 "Mambo es una perrita elegante y carismática que cautiva a todos con su belleza y dulzura. Sus grandes ojos marrones y su pelaje suave son solo un reflejo de su personalidad encantadora. Bella es una compañera leal y amorosa que se adapta fácilmente a cualquier entorno. Es perfecta para familias, parejas o personas solteras. Le gusta pasar tiempo en casa, compartiendo momentos acogedores y relajantes. Bella se lleva bien con otros perros y es una excelente compañera de juegos. Darle un hogar a Bella es brindarle a tu vida una dosis de elegancia y alegría perruna.",
                 29.75,
                 "Bs. As.",
@@ -117,7 +139,7 @@ class DogProvider {
                 "Mestizo",
                 "Boyero de Berna",
                 11,
-                "Macho",
+                "Hembra",
                 "Max es un perro macho de raza Labrador Retriever con un pelaje dorado brillante que destaca por su amigable personalidad. Su pelaje es suave al tacto y brilla bajo el sol. Es un perro de tamaño mediano con una constitución robusta y patas fuertes. Max tiene unos ojos expresivos y marrones que reflejan su inteligencia y curiosidad. Siempre está lleno de energía y le encanta jugar a buscar la pelota. Es el compañero perfecto para largos paseos y aventuras al aire libre. Max es leal y cariñoso, y no hay nada que disfrute más que pasar tiempo con su familia.",
                 29.75,
                 "Bs. As.",

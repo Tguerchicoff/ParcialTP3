@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface DogApiService {
     //List all breeds
     @GET("breeds/list/all")
-    fun getBreeds(): Response<AllBreedsAPIResponse>
+    fun getBreeds(): Call<AllBreedsAPIResponse>
 
     //Random image
     @GET("breeds/image/random")
