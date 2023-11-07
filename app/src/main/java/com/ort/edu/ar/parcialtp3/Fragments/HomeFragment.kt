@@ -10,13 +10,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
@@ -34,7 +32,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private val dogApiService = ActivityServiceApiBuilder.create()
     private var breedList: MutableList<String> = mutableListOf()
-    private lateinit var breedSpinner: Spinner
+    private lateinit var ageSpinner: Spinner
     private lateinit var genderSpinner: Spinner
     private lateinit var provinceSpinner: Spinner
     private lateinit var searchView: AutoCompleteTextView
@@ -47,29 +45,34 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recDogs = view.findViewById(R.id.rec_dogs)
-        breedSpinner = view.findViewById(R.id.spinnerRaza)
+        ageSpinner = view.findViewById(R.id.spinnerEdad)
         genderSpinner = view.findViewById(R.id.spinnerSexo)
         provinceSpinner = view.findViewById(R.id.spinner1)
         searchView = view.findViewById(R.id.searchView)
 
         val genderValues = Sex.values().map { it.name }.toMutableList()
         val provinceValues = Provinces.values().map { it.name }.toMutableList()
+        val ageValues = (1..20).map { it.toString() }.toMutableList()
 
-        // Agrega el hint vacío en la posición 0
+
         genderValues.add(0, "TODOS")
-        provinceValues.add(0, "TODOS")
-
         val genderAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genderValues)
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         genderSpinner.adapter = genderAdapter
         genderSpinner.setSelection(0)
 
+        provinceValues.add(0, "TODOS")
         val provinceAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, provinceValues)
         provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         provinceSpinner.adapter = provinceAdapter
         provinceSpinner.setSelection(0)
 
-        // Llamar a la función de obtención de razas
+        ageValues.add(0, "TODOS")
+        val ageAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, ageValues)
+        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ageSpinner.adapter = ageAdapter
+        ageSpinner.setSelection(0)
+
         listDogBreeds()
 
         genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -87,7 +90,17 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
                 filterAndRefreshList()
             }
 
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
+                // No se requiere acción específica aquí
+            }
+        }
+        ageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                filterAndRefreshList()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
                 // No se requiere acción específica aquí
             }
         }
@@ -103,16 +116,16 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Filtra las sugerencias basadas en el texto ingresado
-                val text = s.toString().trim()
-                val filteredSuggestions = breedList.filter { it.contains(text, ignoreCase = true) }
+                val text = s.toString().trim().toLowerCase() // Convierte el texto a minúsculas
+                val filteredSuggestions = breedList.filter { it.toLowerCase().startsWith(text) }
                 breedAdapter.clear()
                 breedAdapter.addAll(filteredSuggestions)
                 breedAdapter.notifyDataSetChanged()
+                filterAndRefreshList()
             }
 
             override fun afterTextChanged(s: Editable?) {
-                // No se necesita implementar esto
+                filterAndRefreshList()
             }
         })
 
@@ -163,10 +176,6 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
                     val breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, breedList)
                     breedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-                    // Asigna el adaptador al Spinner
-                    requireActivity().runOnUiThread {
-                        breedSpinner.adapter = breedAdapter
-                    }
                 }
             }
         }
@@ -175,12 +184,14 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     private fun filterAndRefreshList() {
         val genderFilter = if (genderSpinner != null && genderSpinner.selectedItemPosition > 0) genderSpinner.selectedItem.toString() else null
         val provinceFilter = if (provinceSpinner != null && provinceSpinner.selectedItemPosition > 0) provinceSpinner.selectedItem.toString() else null
+        val ageFilter = if(ageSpinner != null && ageSpinner.selectedItemPosition > 0) ageSpinner.selectedItem.toString().toInt() else null
         val breedFilter = if (searchView.text.toString().isNotBlank()) searchView.text.toString() else null
 
         val filteredList = DogProvider.getAllDogs().filter { dog ->
             (genderFilter == null || dog.gender == genderFilter) &&
                     (provinceFilter == null || dog.location == provinceFilter) &&
-                    (breedFilter == null || dog.breed == breedFilter)
+                    (breedFilter == null || dog.breed.contains(breedFilter, ignoreCase = true)) &&
+                    (ageFilter == null || dog.age == ageFilter)
         }
 
         dogListAdapter.updateDogList(filteredList.toMutableList())

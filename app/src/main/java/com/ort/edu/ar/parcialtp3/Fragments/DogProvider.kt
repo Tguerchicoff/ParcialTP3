@@ -5,7 +5,7 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 class DogProvider {
     companion object{
 
-        fun filterDogs(gender: String?, province: String?, breed: String?): List<Dog> {
+        fun filterDogs(gender: String?, province: String?, breed: String?, age: Int?): List<Dog> {
             // Inicialmente, todos los perros están en la lista de resultados
             var filteredDogs = getAllDogs() .toList()
 
@@ -22,6 +22,11 @@ class DogProvider {
             if (breed != null) {
                 // Filtrar por raza
                 filteredDogs = filteredDogs.filter { it.breed == breed }
+            }
+
+            if(age != null){
+                //Filtrar por edad
+                filteredDogs = filteredDogs.filter { it.age == age }
             }
 
             return filteredDogs
