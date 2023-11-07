@@ -6,7 +6,7 @@ class DogProvider {
     companion object{
 
         fun getAllDogs(): List<Dog> {
-            return dogList.filter{ !it.isAdopted}
+            return dogList
         }
 
         fun getFavoriteDogs(): List<Dog> {

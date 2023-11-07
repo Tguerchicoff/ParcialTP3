@@ -5,15 +5,21 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.R
 import com.bumptech.glide.Glide
+import com.ort.edu.ar.parcialtp3.Fragments.FavouritesFragment
+import com.ort.edu.ar.parcialtp3.Fragments.HomeFragment
+import com.ort.edu.ar.parcialtp3.Listener.OnCheckboxChangedListener
 import com.ort.edu.ar.parcialtp3.entities.Dog
+import okhttp3.internal.notify
 
 class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     private var view: View
-    private var favoriteCheckBox: CheckBox? = null
+    var favoriteCheckBox: CheckBox? = null
 
        fun render (dog: Dog){
 
@@ -30,6 +36,7 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
            // Configurar el OnCheckedChangeListener para el CheckBox de "Favorito"
            favoriteCheckBox?.setOnCheckedChangeListener { _, isChecked ->
                dog.isFavorite = isChecked
+               Toast.makeText(view.context, "Estado del favorito cambiado", Toast.LENGTH_SHORT).show()
                Log.e("perrito", dog.toString())
            }
     }
@@ -84,5 +91,6 @@ class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     fun getCardLayout (): CardView {
         return view.findViewById(R.id.card)
     }
+
 
 }

@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
+import com.ort.edu.ar.parcialtp3.Listener.OnCheckboxChangedListener
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.entities.Dog
 
 
-class HomeFragment : Fragment(), OnViewItemClickedListener {
+class HomeFragment : Fragment(), OnViewItemClickedListener, OnCheckboxChangedListener {
     private lateinit var dogListAdapter: DogListAdapter
     lateinit var recDogs : RecyclerView
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -36,14 +37,19 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         requireActivity()
         recDogs.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
-        dogListAdapter = DogListAdapter(dogList, this)
+        dogListAdapter = DogListAdapter(dogList, this, this)
         recDogs.layoutManager = linearLayoutManager
         recDogs.adapter = dogListAdapter
+        dogListAdapter.filterHome()
 
    }
 
     override fun onViewItemDetail(dog: Dog) {
 
+    }
+
+    override fun onCheckboxChanged(dog: Dog) {
+        dogListAdapter.notifyDataSetChanged()
     }
 }
 
