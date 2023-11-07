@@ -12,7 +12,7 @@
     <string name="nav_open">Abierto</string>
     <string name="nav_close">Cerrado</string>
     <string name="btn_adopt">Adoptar</string>
-    <string name="sex">Sex</string>
+    <string name="sex">Sexo</string>
     <string name="peso">Peso</string>
     <string name="name">Nombre</string>
     <string name="old">Edad</string>
@@ -26,4 +26,6 @@
     <string name="pref_cat_setting">Generales</string>
     <string name="switch_night_mode">Modo Oscuro</string>
     <string name="breed">Raza</string>
+    <string name="filtros">Filtros</string>
+    <string name="age">Edad</string>
 </resources>
