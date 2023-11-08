@@ -1,6 +1,7 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
 import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.entities.Provinces
 
 class DogProvider {
     companion object{
@@ -49,7 +50,8 @@ class DogProvider {
         }
 
         fun getLocations(): List<String>{
-            return locationsList
+            return Provinces.values().map { it.toString() }
+        }
 
         fun removeFromAllDogs(dog: Dog) {
             val index = dogList.indexOf(dog)
