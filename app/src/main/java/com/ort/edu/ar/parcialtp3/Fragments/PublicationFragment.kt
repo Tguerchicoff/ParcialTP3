@@ -1,5 +1,6 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -154,8 +155,11 @@ class PublicationFragment : Fragment() {
     }
 
     fun submitDogForm(name: String, breed: String, subBreed: String, age: Int, gender: String, description: String, weight: Double, location: String, images: List<String>) {
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("user_name", "Usuario")
+
         // Crear una instancia de Dog
-        val newDog = Dog(name, breed, subBreed, age, gender, description, weight, location, images[0], images.getOrNull(1), images.getOrNull(2), detail = null, caregiversName = null, isAdopted = false, isFavorite = false)
+        val newDog = Dog(name, breed, subBreed, age, gender, description, weight, location, images[0], images.getOrNull(1), images.getOrNull(2), detail = null, caregiversName = userName, isAdopted = false, isFavorite = false)
 
         // Agregar el nuevo perro a DogProvider
         DogProvider.addDog(newDog)
