@@ -13,4 +13,6 @@
     <color name="orange">#FF6600</color>
     <color name="red">#FF0000 </color>
     <color name="green">#339900</color>
+    <color name="paleGrey">#D8D8D8</color>
+
 </resources>

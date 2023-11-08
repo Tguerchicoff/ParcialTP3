@@ -4,11 +4,11 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 import com.ort.edu.ar.parcialtp3.entities.Provinces
 
 class DogProvider {
-    companion object{
+    companion object {
 
         fun filterDogs(gender: String?, province: String?, breed: String?, age: Int?): List<Dog> {
             // Inicialmente, todos los perros están en la lista de resultados
-            var filteredDogs = getAllDogs() .toList()
+            var filteredDogs = getAllDogs().toList()
 
             if (gender != null) {
                 // Filtrar por género
@@ -25,7 +25,7 @@ class DogProvider {
                 filteredDogs = filteredDogs.filter { it.breed == breed }
             }
 
-            if(age != null){
+            if (age != null) {
                 //Filtrar por edad
                 filteredDogs = filteredDogs.filter { it.age == age }
             }
@@ -34,7 +34,7 @@ class DogProvider {
         }
 
         fun getAllDogs(): List<Dog> {
-            return dogList.filter{ !it.isAdopted}
+            return dogList.filter { !it.isAdopted }
         }
 
         fun getFavoriteDogs(): List<Dog> {
@@ -49,7 +49,7 @@ class DogProvider {
             dogList.add(dog)
         }
 
-        fun getLocations(): List<String>{
+        fun getLocations(): List<String> {
             return Provinces.values().map { it.toString() }
         }
 
@@ -76,55 +76,55 @@ class DogProvider {
             }
         }
 
-        val dogList : MutableList<Dog> = mutableListOf(
+        val dogList: MutableList<Dog> = mutableListOf(
             Dog(
                 "Mambo",
-                "Mestizo",
-                "Boyero de Berna",
+                "Akita",
+                "Pura",
                 11,
                 "Hembra",
-                "Mambo es un encantador perrito encontrado en la calle en malas condiciones. Luego de meses de veterinario esta 100% recuperado. Su pelaje suave como algodón y sus ojos tiernos te conquistarán al instante. Es un compañero leal y cariñoso que busca un hogar lleno de amor y cuidado. Le encanta pasear por el parque, jugar con su pelota y recibir caricias. Con su energía contagiosa y su naturaleza juguetona, teofrecerá compañía incondicional..",
+                "Mambo es una encantadora perrita encontrada en la calle en malas condiciones. Luego de meses de veterinario esta 100% recuperada. Su pelaje suave como algodón y sus ojos tiernos te conquistarán al instante. Es una compañera leal y cariñosa que busca un hogar lleno de amor y cuidado. Le encanta pasear por el parque, jugar con su pelota y recibir caricias. Con su energía contagiosa y su naturaleza juguetona, teofrecerá compañía incondicional.",
                 29.75,
                 "Bs. As.",
-                "https://scontent.faep9-1.fna.fbcdn.net/v/t31.18172-8/20643539_10213827216376555_7767922301574437407_o.jpg?_nc_cat=102&ccb=1-7&_nc_sid=4dc865&_nc_eui2=AeHrzWEM7dDjgBGrzI3ZPTcfxcWFn3mL7zHFxYWfeYvvMQHUhYrbBvTwtTo8aFt_b1c&_nc_ohc=dF-o0K6o4GwAX-3QY9F&_nc_ht=scontent.faep9-1.fna&oh=00_AfC-vYnFBG7CWRvyafWsj8YfOjID9Hit2hdDF-zppYbfjQ&oe=656DFDD5",
-                "https://scontent.faep9-2.fna.fbcdn.net/v/t1.18169-9/10670240_10205416238627368_6228580445516569846_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=4dc865&_nc_eui2=AeGb8WklRiZmwIYbYw3bnYY3q4zgZCTb4OKrjOBkJNvg4oYTfqPj3ng1yti2yD-Z5aw&_nc_ohc=AnwuFqtPwpQAX973raE&_nc_ht=scontent.faep9-2.fna&oh=00_AfCQGek5xLvqkB6mkC4OXzH8UdN4jmaFZ_dCfP_dOOSvxA&oe=656E13F0",
-                "https://scontent.faep9-1.fna.fbcdn.net/v/t31.18172-8/15540966_10211372975062056_5366359715840530816_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=4dc865&_nc_eui2=AeHRT7gj7KSVWhUXp7y7ujRQJJRciU6WpOcklFyJTpak56XCHoCZTpAokOP6plO2A4U&_nc_ohc=9cCE6CP9waQAX8aNgrh&_nc_ht=scontent.faep9-1.fna&oh=00_AfC14VNhkyRTgr-O2nqcd3oTj10OK2eiCdCoipredk6-LQ&oe=657227D2",
+                "https://images.dog.ceo/breeds/akita/512px-Akita_inu.jpg",
+                "https://images.dog.ceo/breeds/akita/Akita_inu_blanc.jpg",
+                "https://images.dog.ceo/breeds/akita/An_Akita_Inu_resting.jpg",
                 null,
                 "Pato",
-                true,
-                true
+                false,
+                false
 
             ),
             Dog(
-                "Akilez",
-                "Mestizo",
-                "Pit",
+                "Aquiles",
+                "Vizsla",
+                "Puro",
                 8,
                 "Macho",
-                "Aki es un perrito valiente y fuerte que ha superado obstáculos en la vida con una determinación envidiable. A pesar de su historia, Aki es un compañero amigable y afectuoso que espera ansiosamente encontrar un hogar donde se sienta seguro y amado. Su mirada inteligente y su pelaje elegante hacen de Negri un canino especial. Le encanta explorar la naturaleza y disfrutar de largos paseos. Además, es un aprendiz rápido y estaría encantado de participar en actividades de entrenamiento.",
+                "Aquiles es un perro valiente y fuerte que ha superado obstáculos en la vida con una determinación envidiable. A pesar de su historia, Aki es un compañero amigable y afectuoso que espera ansiosamente encontrar un hogar donde se sienta seguro y amado. Su mirada inteligente y su pelaje elegante hacen de Aki un canino especial. Le encanta explorar la naturaleza y disfrutar de largos paseos. Además, es un aprendiz rápido y estaría encantado de participar en actividades de entrenamiento.",
                 20.0,
                 "Cordoba",
-                "https://images.unsplash.com/photo-1670752826047-5689584dfa93?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1660760610164-24a2cf0824a1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1660760609460-a682c6339dfb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.dog.ceo/breeds/vizsla/n02100583_9922.jpg",
+                "https://images.dog.ceo/breeds/vizsla/n02100583_12904.jpg",
+                "https://images.dog.ceo/breeds/vizsla/n02100583_7467.jpg",
                 null,
                 "Fede",
-                true,
+                false,
                 false
             ),
             Dog(
 
                 "Pepe",
-                "Labrador",
-                "Rubio",
-                9 ,
-                "Macho",
-                "Mambo es una perrita elegante y carismática que cautiva a todos con su belleza y dulzura. Sus grandes ojos marrones y su pelaje suave son solo un reflejo de su personalidad encantadora. Bella es una compañera leal y amorosa que se adapta fácilmente a cualquier entorno. Es perfecta para familias, parejas o personas solteras. Le gusta pasar tiempo en casa, compartiendo momentos acogedores y relajantes. Bella se lleva bien con otros perros y es una excelente compañera de juegos. Darle un hogar a Bella es brindarle a tu vida una dosis de elegancia y alegría perruna.",
+                "Bullterrier",
+                "Staffordshire",
+                9,
+                "Pepe",
+                "Pepe es un majestuoso y carismático perro que cautiva a todos con su belleza y encanto. Sus profundos ojos oscuros y su pelaje suave son solo un reflejo de su personalidad encantadora. Pepe es un compañero leal y cariñoso que se adapta fácilmente a cualquier entorno. Es perfecto para familias, parejas o personas solteras. Disfruta de pasar tiempo en casa, compartiendo momentos acogedores y relajantes. Pepe se lleva bien con otros perros y es un excelente compañero de juegos. Darle un hogar a Pepe es agregar a tu vida una dosis de energía y alegría perruna.",
                 31.5,
                 "Bs. As.",
-                "https://images.unsplash.com/photo-1685614016777-6ee6a1836736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1531486613315-3671081d848f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGFicmFkb3IlMjBydWJpb3xlbnwwfHwwfHx8MA%3D%3D",
-                "https://images.unsplash.com/photo-1632434877596-4982d917d7a0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_4058.jpg",
+                "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_1275.jpg",
+                "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_1371.jpg",
                 null,
                 "Joaquin",
                 false,
@@ -134,55 +134,142 @@ class DogProvider {
             Dog(
                 "Tequila",
                 "Chihuahua",
-                "toy",
+                "Toy",
                 7,
                 "Hembra",
                 "Tequila es una adorable chihuahua con un pelaje suave y sedoso que varía en tonos de marrón y blanco, lo que le confiere una apariencia encantadora y juguetona. A pesar de su pequeño tamaño, Tequila tiene una personalidad valiente y llena de energía. Siempre está lista para explorar el mundo que la rodea y tiene una mirada curiosa y traviesa en sus ojos brillantes. Tequila es una chihuahua encantadora y cariñosa que roba corazones con su simpatía y alegría.",
                 5.0,
                 "Bs. As.",
-                "https://images.unsplash.com/photo-1610041518868-f9284e7eecfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1494205577727-d32e58564756?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D656E13F0",
-                "https://images.unsplash.com/photo-1514134136604-e14631dd3477?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.dog.ceo/breeds/chihuahua/n02085620_13151.jpg",
+                "https://images.dog.ceo/breeds/chihuahua/n02085620_3763.jpg",
+                "https://images.dog.ceo/breeds/chihuahua/black_chihuahua.jpg",
                 null,
                 "Jose",
                 false,
-                true
+                false
 
             ),
             Dog(
                 "Max",
-                "Labrador",
-                "Retriever",
+                "Pastor",
+                "Caucásico",
                 2,
                 "Macho",
-                "Max es un perro macho de raza Labrador Retriever con un pelaje dorado brillante que destaca por su amigable personalidad. Su pelaje es suave al tacto y brilla bajo el sol. Es un perro de tamaño mediano con una constitución robusta y patas fuertes. Max tiene unos ojos expresivos y marrones que reflejan su inteligencia y curiosidad. Siempre está lleno de energía y le encanta jugar a buscar la pelota. Es el compañero perfecto para largos paseos y aventuras al aire libre. Max es leal y cariñoso, y no hay nada que disfrute más que pasar tiempo con su familia.",
-                17.0,
+                "Max es un perro macho de raza Pastor caucásito que destaca por su amigable personalidad. Su pelaje es suave al tacto y brilla bajo el sol. Es un perro de tamaño grande con una constitución robusta y patas fuertes. Max tiene unos ojos expresivos y marrones que reflejan su inteligencia y curiosidad. Siempre está lleno de energía y le encanta jugar a buscar la pelota. Es el compañero perfecto para largos paseos y aventuras al aire libre. Max es leal y cariñoso, y no hay nada que disfrute más que pasar tiempo con su familia.",
+                42.0,
                 "Mendoza",
-                "https://images.unsplash.com/photo-1623052940978-051d2c0fb4be?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1552575595-38bfbd75841a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1602941953280-ea523175bcfc?q=80&w=1942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112025.jpg",
+                "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20200201_145256.jpg",
+                "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20191105_141904.jpg",
                 null,
                 "Pia",
                 false,
-                true
+                false
             ),
             Dog(
                 "Sasha",
-                "australian labradoodle",
-                "",
+                "Spaniel",
+                "Cocker",
                 5,
                 "Hembra",
-                "Sasha, una Australian Labradoodle de 5 años, cautiva con su pelaje rizado en tonos crema y chocolate. Su mirada tierna y afectuosa ilumina cada día, brindando alegría a todos a su alrededor.",
+                "Sasha, una Spaniel Cocker de 5 años, cautiva con su pelaje rizado. Su mirada tierna y afectuosa ilumina cada día, brindando alegría a todos a su alrededor.",
                 10.0,
                 "Bs. As.",
-                "https://images.unsplash.com/photo-1659875459526-172953ed6dba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXVzdHJhbGlhbiUyMGxhYnJhZG9vZGxlfGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1663416771563-4c2342b62551?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXVzdHJhbGlhbiUyMGxhYnJhZG9vZGxlfGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1659875459322-43b970c6642e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXVzdHJhbGlhbiUyMGxhYnJhZG9vZGxlfGVufDB8fDB8fHww",
+                "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_12613.jpg",
+                "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_7327.jpg",
+                "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_13800.jpg",
                 null,
                 "Gonza",
                 false,
-                true
+                false
+            ),
+            Dog(
+                "Cuba",
+                "Golden",
+                "Retriever",
+                7,
+                "Hembra",
+                "Cuba, una fiel compañera de vida. Con su mirada curiosa y sus ganas de jugar, no hay dudas que si adoptas a Cuba, adoptas a tu nueva mejor amiga.",
+                32.0,
+                "Bs. As.",
+                "https://images.dog.ceo/breeds/retriever-golden/n02099601_7930.jpg",
+                "https://images.dog.ceo/breeds/retriever-golden/n02099601_2796.jpg",
+                "https://images.dog.ceo/breeds/retriever-golden/20200731_180910_200731.jpg",
+                null,
+                "Agus",
+                false,
+                false
+            ),
+            Dog(
+            "Duncan",
+            "Braco",
+            "Aleman",
+            9,
+            "Macho",
+            "Duncan, un compañero leal y aventurero. Su espíritu valiente y su disposición para explorar te llevarán en emocionantes travesías. Adoptar a Duncan es el primer paso para una vida repleta de aventuras y lealtad inquebrantable.",
+            21.0,
+            "Entre Rios",
+            "https://images.dog.ceo/breeds/pointer-german/n02100236_5647.jpg",
+            "https://images.dog.ceo/breeds/pointer-german/n02100236_5597.jpg",
+            "https://images.dog.ceo/breeds/pointer-german/n02100236_3629.jpg",
+            null,
+            "Tomi",
+            false,
+            false
+        ),
+            Dog(
+                "Truman",
+                "Boyero",
+                "De Berna",
+                10,
+                "Macho",
+                "Truman, un gigante amigable y protector. Con su gran corazón y su naturaleza cariñosa, Truman es un compañero ideal para aquellos que buscan ternura y seguridad. Cuando adoptas a Truman, te conviertes en su familia y él en tu defensor inquebrantable.",
+                40.0,
+                "Catamarca",
+                "https://images.dog.ceo/breeds/mountain-bernese/n02107683_4520.jpg",
+                "https://images.dog.ceo/breeds/mountain-bernese/n02107683_1536.jpg",
+                "https://images.dog.ceo/breeds/mountain-bernese/n02107683_33.jpg",
+                null,
+                "Martin",
+                false,
+                false
+            ),
+            Dog(
+                "Luna",
+                "Border",
+                "Terrier",
+                8,
+                "Hembra",
+                "Luna, una Border Terrier con un espíritu intrépido y un corazón valiente. Su curiosidad inagotable y su determinación incansable la convierten en la compañera ideal para cualquier aventura. Si buscas un amigo leal y valiente para explorar el mundo a tu lado, Luna es la elección perfecta. Con ella, cada día es una nueva y emocionante aventura esperando a ser descubierta..",
+                5.0,
+                "Formosa",
+                "https://images.dog.ceo/breeds/terrier-border/n02093754_909.jpg",
+                "https://images.dog.ceo/breeds/terrier-border/n02093754_1247.jpg",
+                "https://images.dog.ceo/breeds/terrier-border/n02093754_7820.jpg",
+                null,
+                "Pato",
+                false,
+                false
             )
+            ,
+            Dog(
+                "Toto",
+                "Lobero",
+                "Irlandes",
+                6,
+                "Macho",
+                "Toto, un majestuoso Lobero Irlandés que irradia elegancia y nobleza. Con su imponente presencia y su carácter amable, es un verdadero caballero de cuatro patas. Toto es el compañero perfecto para quienes buscan la compañía de un gentil gigante. Su lealtad inquebrantable y su amor eterno harán que te sientas especial todos los días. Si anhelas la compañía de un verdadero aristócrata canino, Toto es la elección ideal.",
+                56.0,
+                "Tucuman",
+                "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_626.jpg",
+                "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_2116.jpg",
+                "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_3109.jpg",
+                null,
+                "Joaquin",
+                false,
+                false
+            )
+
         )
         val locationsList: MutableList<String> = mutableListOf(
             "CABA",
@@ -191,7 +278,6 @@ class DogProvider {
             "Buenos Aires, Zona Oeste"
         )
     }
-
 
 
 }
