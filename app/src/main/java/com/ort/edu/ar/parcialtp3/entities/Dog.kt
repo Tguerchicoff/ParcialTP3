@@ -2,6 +2,7 @@ package com.ort.edu.ar.parcialtp3.entities
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
 
 data class Dog(
@@ -20,4 +21,4 @@ data class Dog(
     val caregiversName: String?,
     val isAdopted: Boolean,
     var isFavorite: Boolean
-)
+): Serializable

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
@@ -42,7 +44,18 @@ class FavouritesFragment : Fragment(), OnViewItemClickedListener {
     }
 
     override fun onViewItemDetail(dog: Dog) {
+        val detailsFragment = DetailsFragment()
 
+        val bundle = Bundle()
+        bundle.putSerializable("dog", dog)
+        detailsFragment.arguments = bundle
+
+        // Reemplazar el contenido actual del fragmento principal con el fragmento de detalles
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, detailsFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
 }
