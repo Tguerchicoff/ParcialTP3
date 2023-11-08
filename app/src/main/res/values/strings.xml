@@ -25,6 +25,8 @@
     <string name="titleFakeLogin">Ingrese su nombre:</string>
     <string name="pref_cat_setting">Generales</string>
     <string name="switch_night_mode">Modo Oscuro</string>
+    <string name="cargarImagenes">Cargar Imagenes</string>
+    <string name="publicar">Publicar</string>
     <string name="breed">Raza</string>
     <string name="filtros">Filtros</string>
     <string name="age">Edad</string>
