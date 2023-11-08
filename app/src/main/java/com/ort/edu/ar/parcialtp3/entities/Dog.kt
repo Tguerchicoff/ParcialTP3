@@ -18,7 +18,7 @@ data class Dog(
     val urlImage2: String?,
     val urlImage3: String?,
     val detail: String?,
-    val caregiversName: String?,
+    var caregiversName: String?,
     val isAdopted: Boolean,
     var isFavorite: Boolean
 ): Serializable
