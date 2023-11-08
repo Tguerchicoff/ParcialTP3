@@ -178,8 +178,12 @@ class PublicationFragment : Fragment() {
                 if (body != null) {
                     breedList = body.message.keys.toList().toMutableList()
                     breedList.sort()
-                    breedList.add(0,"Raza")
-                    val breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, breedList)
+                    breedList.add(0, "Raza")
+                    val breedAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        breedList
+                    )
                     breedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
 
@@ -187,35 +191,93 @@ class PublicationFragment : Fragment() {
                         breedSpinner.adapter = breedAdapter
 
 
-                        breedSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                val selectedBreed = breedList[position]
+                        breedSpinner.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    parent: AdapterView<*>?,
+                                    view: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+                                    val selectedBreed = breedList[position]
 
-                                val subBreeds = body.message[selectedBreed]
+                                    val subBreeds = body.message[selectedBreed]
 
-                                subBreedList.clear()
+                                    subBreedList.clear()
 
-                                if (subBreeds != null && subBreeds.isNotEmpty()) {
-                                    subBreedList.addAll(subBreeds)
-                                    val subBreedAdapter = ArrayAdapter(
-                                        requireContext(),
-                                        android.R.layout.simple_spinner_item,
-                                        subBreedList
-                                    )
-                                    subBreedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                    subBreedSpinner.adapter = subBreedAdapter
-                                    subBreedSpinner.visibility = View.VISIBLE
-                                } else {
-                                    subBreedSpinner.visibility = View.GONE
+                                    if (subBreeds != null && subBreeds.isNotEmpty()) {
+                                        subBreedList.addAll(subBreeds)
+                                        val subBreedAdapter = ArrayAdapter(
+                                            requireContext(),
+                                            android.R.layout.simple_spinner_item,
+                                            subBreedList
+                                        )
+                                        subBreedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                        subBreedSpinner.adapter = subBreedAdapter
+                                        subBreedSpinner.visibility = View.VISIBLE
+                                    } else {
+                                        subBreedSpinner.visibility = View.GONE
+                                    }
+                                }
+
+                                override fun onNothingSelected(parent: AdapterView<*>?) {
                                 }
                             }
-
-                            override fun onNothingSelected(parent: AdapterView<*>?) {
-                            }
-                        }
                     }
                 }
             }
         }
     }
+    private fun getDogsImages() {
+        GlobalScope.launch(Dispatchers.IO) {
+
+            val breed = breedSpinner.selectedItem.toString()
+
+            var subBreed = ""
+
+            if (subBreedSpinner.visibility == View.VISIBLE) {
+                subBreed = subBreedSpinner.selectedItem.toString()
+            }
+
+            val response = if (subBreed.isNotEmpty()) {
+                dogApiService.getThreeRandomSubBreedImages(breed, subBreed).execute()
+            } else {
+                dogApiService.getThreeRandomBreedImages(breed).execute()
+            }
+
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+
+                    dogImagesList.addAll(body.message)
+
+                    if (dogImagesList.size >= 3) {
+                        requireActivity().runOnUiThread {
+                            val imageViews = listOf(
+                                view?.findViewById(R.id.image_upload_1) as ImageView,
+                                view?.findViewById(R.id.image_upload_2) as ImageView,
+                                view?.findViewById(R.id.image_upload_3) as ImageView
+                            )
+
+                            loadImagesWithGlide(dogImagesList.subList(0, 3), imageViews)
+                            showLoaders(false)
+                        }
+                    }
+                }            } else {
+                requireActivity().runOnUiThread {
+                    Toast.makeText(requireContext(), "Error de API al cargar las imágenes", Toast.LENGTH_SHORT).show()
+                    showLoaders(false)
+                }
+
+            }
+        }
+    }
+
+    private fun showLoaders(isLoading: Boolean) {
+        loading1.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+        loading2.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+        loading3.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+    }
+}
+
 
