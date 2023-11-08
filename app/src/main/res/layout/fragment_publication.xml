@@ -4,20 +4,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.FavouritesFragment">
+    tools:context=".Fragments.PublicationFragment">
 
-    <TextView
-        android:id="@+id/text_publication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="This is publication fragment"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Spinner
+        android:id="@+id/spinner_subraza"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/spinner_raza"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nombre" />
+
+    <EditText
+        android:id="@+id/edit_text_descripcion"
+        android:layout_width="290dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="61dp"
+        android:hint="Descripción"
+        android:lines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_ubicacion" />
+
+    <RadioButton
+        android:id="@+id/radio_hembra"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="51dp"
+        android:text="Hembra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_peso"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_raza" />
+
+    <ImageView
+        android:id="@+id/image_upload_2"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/dog_paw"
+        app:layout_constraintEnd_toStartOf="@+id/image_upload_3"
+        app:layout_constraintStart_toEndOf="@+id/image_upload_1"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
+
+    <ImageView
+        android:id="@+id/image_upload_1"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/dog_paw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
+
+    <ImageView
+        android:id="@+id/image_upload_3"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/dog_paw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_descripcion" />
+
+    <Button
+        android:id="@+id/btn_cargar_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/cargarImagenes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_upload_2" />
+
+    <Button
+        android:id="@+id/btn_enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/publicar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_upload_3" />
+
+    <EditText
+        android:id="@+id/edit_text_peso"
+        android:layout_width="90dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:inputType="number"
+        android:hint="Peso (kg)"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_edad"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_raza" />
+
+    <Spinner
+        android:id="@+id/spinner_raza"
+        android:layout_width="131dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nombre" />
+
+    <RadioButton
+        android:id="@+id/radio_macho"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:text="Macho"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_ubicacion"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_peso" />
+
+    <EditText
+        android:id="@+id/edit_text_edad"
+        android:layout_width="80dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="28dp"
+        android:inputType="number"
+        android:hint="Edad"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_ubicacion"
+        app:layout_constraintStart_toStartOf="@+id/spinner_raza"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_raza"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinner_ubicacion"
+        android:layout_width="219dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_peso" />
+
+    <EditText
+        android:id="@+id/edit_text_nombre"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="61dp"
+        android:hint="Nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_sexo"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/radio_macho"
+        app:layout_constraintEnd_toStartOf="@+id/radio_hembra"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_peso"
+        app:layout_constraintTop_toBottomOf="@+id/radio_hembra">
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="676dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
