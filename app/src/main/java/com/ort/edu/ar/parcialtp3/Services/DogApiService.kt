@@ -12,32 +12,37 @@ import retrofit2.http.Path
 interface DogApiService {
     //List all breeds
     @GET("breeds/list/all")
-    fun getBreeds(): Response<AllBreedsAPIResponse>
+    fun getBreeds(): Call<AllBreedsAPIResponse>
 
     //Random image
     @GET("breeds/image/random")
-    fun getRandomImage(): Response<RandomImageAPIResponse>
+    fun getRandomImage(): Call<RandomImageAPIResponse>
 
     @GET("breeds/image/random/{count}")
-    fun getRandomImages(@Path("count") count: Int): Response<RandomImagesAPIResponse>
+    fun getRandomImages(@Path("count") count: Int): Call<RandomImagesAPIResponse>
 
     //By breed
     @GET("breed/{breed}/images")
-    fun getImagesForBreed(@Path("breed") breed: String): Response<SubBreedImagesAPIResponse>
+    fun getImagesForBreed(@Path("breed") breed: String): Call<SubBreedImagesAPIResponse>
+  
     @GET("breed/{breed}/images/random")
-    fun getRandomHoundImage(): Response<RandomImageAPIResponse>
+    fun getRandomHoundImage(): Call<RandomImageAPIResponse>
+  
+    @GET("breed/{breed}/images/random/{count}")
+    fun getRandomHoundImages(@Path("count") count: Int): Call<RandomImagesAPIResponse>
+
     //By sub-breed
     @GET("breed/{breed}/list")
-    fun getSubBreedsForHound(): Response<SubBreedsAPIResponse>
+    fun getSubBreedsForHound(): Call<SubBreedsAPIResponse>
 
     @GET("breed/{breed}/{subBreed}/images")
-    fun getImagesForSubBreed(@Path("subBreed") subBreed: String): Response<SubBreedImagesAPIResponse>
+    fun getImagesForSubBreed(@Path("subBreed") subBreed: String): Call<SubBreedImagesAPIResponse>
 
     @GET("breed/{breed}/{subBreed}/images/random")
-    fun getRandomImageForSubBreed(@Path("subBreed") subBreed: String): Response<RandomImageAPIResponse>
+    fun getRandomImageForSubBreed(@Path("subBreed") subBreed: String): Call<RandomImageAPIResponse>
 
     @GET("breed/{breed}/{subBreed}/images/random/{count}")
-    fun getRandomImagesForSubBreed(@Path("subBreed") subBreed: String, @Path("count") count: Int): Response<RandomImagesAPIResponse>
+    fun getRandomImagesForSubBreed(@Path("subBreed") subBreed: String, @Path("count") count: Int): Call<RandomImagesAPIResponse>
     @GET("breed/{breed}/{subBreed}/images/random/3")
     fun getThreeRandomSubBreedImages(@Path("breed") breed: String, @Path("subBreed") subBreed: String): Call<RandomImagesAPIResponse>
     @GET("breed/{breed}/images/random/3")

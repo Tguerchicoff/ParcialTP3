@@ -5,6 +5,33 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 class DogProvider {
     companion object{
 
+        fun filterDogs(gender: String?, province: String?, breed: String?, age: Int?): List<Dog> {
+            // Inicialmente, todos los perros están en la lista de resultados
+            var filteredDogs = getAllDogs() .toList()
+
+            if (gender != null) {
+                // Filtrar por género
+                filteredDogs = filteredDogs.filter { it.gender == gender }
+            }
+
+            if (province != null) {
+                // Filtrar por provincia
+                filteredDogs = filteredDogs.filter { it.location == province }
+            }
+
+            if (breed != null) {
+                // Filtrar por raza
+                filteredDogs = filteredDogs.filter { it.breed == breed }
+            }
+
+            if(age != null){
+                //Filtrar por edad
+                filteredDogs = filteredDogs.filter { it.age == age }
+            }
+
+            return filteredDogs
+        }
+
         fun getAllDogs(): List<Dog> {
             return dogList.filter{ !it.isAdopted}
         }
@@ -16,6 +43,13 @@ class DogProvider {
         fun getAdoptedDogs(): List<Dog> {
             return dogList.filter { it.isAdopted }
         }
+
+        fun addDog(dog: Dog) {
+            dogList.add(dog)
+        }
+
+        fun getLocations(): List<String>{
+            return locationsList
 
         fun removeFromAllDogs(dog: Dog) {
             val index = dogList.indexOf(dog)
@@ -46,7 +80,7 @@ class DogProvider {
                 "Mestizo",
                 "Boyero de Berna",
                 11,
-                "Macho",
+                "Hembra",
                 "Mambo es un encantador perrito encontrado en la calle en malas condiciones. Luego de meses de veterinario esta 100% recuperado. Su pelaje suave como algodón y sus ojos tiernos te conquistarán al instante. Es un compañero leal y cariñoso que busca un hogar lleno de amor y cuidado. Le encanta pasear por el parque, jugar con su pelota y recibir caricias. Con su energía contagiosa y su naturaleza juguetona, teofrecerá compañía incondicional..",
                 29.75,
                 "Bs. As.",
@@ -77,6 +111,7 @@ class DogProvider {
                 false
             ),
             Dog(
+
                 "Pepe",
                 "Labrador",
                 "Rubio",
@@ -147,6 +182,14 @@ class DogProvider {
                 true
             )
         )
+        val locationsList: MutableList<String> = mutableListOf(
+            "CABA",
+            "Buenos Aires, Zona Norte",
+            "Buenos Aires, Zona Sur",
+            "Buenos Aires, Zona Oeste"
+        )
     }
+
+
 
 }
