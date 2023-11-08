@@ -47,7 +47,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         recDogs = view.findViewById(R.id.rec_dogs)
         ageSpinner = view.findViewById(R.id.spinnerEdad)
         genderSpinner = view.findViewById(R.id.spinnerSexo)
-        provinceSpinner = view.findViewById(R.id.spinner1)
+        provinceSpinner = view.findViewById(R.id.spinnerUbicacion)
         searchView = view.findViewById(R.id.searchView)
 
         val genderValues = Sex.values().map { it.name }.toMutableList()

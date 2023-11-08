@@ -30,4 +30,5 @@
     <string name="breed">Raza</string>
     <string name="filtros">Filtros</string>
     <string name="age">Edad</string>
+    <string name="hintSearch">Ingrese la raza a buscar</string>
 </resources>
