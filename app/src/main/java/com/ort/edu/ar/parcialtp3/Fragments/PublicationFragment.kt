@@ -14,7 +14,6 @@ import com.ort.edu.ar.parcialtp3.entities.Dog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
 class PublicationFragment : Fragment() {
 
     private val dogApiService = ActivityServiceApiBuilder.create()
@@ -29,8 +28,10 @@ class PublicationFragment : Fragment() {
     private lateinit var pesoEditText: EditText
     private lateinit var descripcionEditText: EditText
     private lateinit var sexoRadioGroup: RadioGroup
-    private lateinit var submitButton: Button
     private var generoSeleccionado: String? = null
+    private lateinit var loading1: ProgressBar
+    private lateinit var loading2: ProgressBar
+    private lateinit var loading3: ProgressBar
 
     private var breedList: MutableList<String> = mutableListOf()
     private val subBreedList: MutableList<String> = mutableListOf()
@@ -55,6 +56,11 @@ class PublicationFragment : Fragment() {
         this.listDogBreeds()
 
         locationSpinner = root.findViewById(R.id.spinner_ubicacion)
+
+        loading1 = root.findViewById(R.id.loader1)
+        loading2 = root.findViewById(R.id.loader2)
+        loading3 = root.findViewById(R.id.loader3)
+
 
 
         val locations = DogProvider.getLocations()
@@ -82,10 +88,11 @@ class PublicationFragment : Fragment() {
         btnCargarImg.setOnClickListener {
             if(breedSpinner.selectedItemPosition > 0){
                 dogImagesList.clear()
+                showLoaders(true)
                 getDogsImages()
             }
-          else{
-              Toast.makeText(requireContext(), "Selecciona una raza", Toast.LENGTH_LONG).show()
+            else{
+                Toast.makeText(requireContext(), "Selecciona una raza", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -137,9 +144,6 @@ class PublicationFragment : Fragment() {
         }
 
         return root
-    }
-
-    fun onNothingSelected(parent: AdapterView<*>?) {
     }
 
     private fun loadImagesWithGlide(imageUrls: List<String>, imageViews: List<ImageView>) {
@@ -215,42 +219,3 @@ class PublicationFragment : Fragment() {
         }
     }
 
-    private fun getDogsImages() {
-        GlobalScope.launch(Dispatchers.IO) {
-
-                val breed = breedSpinner.selectedItem.toString()
-
-                var subBreed = ""
-
-                if (subBreedSpinner.visibility == View.VISIBLE) {
-                    subBreed = subBreedSpinner.selectedItem.toString()
-                }
-
-                val response = if (subBreed.isNotEmpty()) {
-                    dogApiService.getThreeRandomSubBreedImages(breed, subBreed).execute()
-                } else {
-                    dogApiService.getThreeRandomBreedImages(breed).execute()
-                }
-
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null) {
-
-                        dogImagesList.addAll(body.message)
-
-                        if (dogImagesList.size >= 3) {
-                            requireActivity().runOnUiThread {
-                                val imageViews = listOf(
-                                    view?.findViewById(R.id.image_upload_1) as ImageView,
-                                    view?.findViewById(R.id.image_upload_2) as ImageView,
-                                    view?.findViewById(R.id.image_upload_3) as ImageView
-                                )
-
-                                loadImagesWithGlide(dogImagesList.subList(0, 3), imageViews)
-                            }
-                        }
-                    }
-                }
-        }
-    }
-}
