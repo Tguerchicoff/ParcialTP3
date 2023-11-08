@@ -14,6 +14,7 @@
     <string name="btn_adopt">Adoptar</string>
     <string name="sex">Sexo</string>
     <string name="peso">Peso</string>
+    <string name="wight_kg">Peso (kg)</string>
     <string name="name">Nombre</string>
     <string name="old">Edad</string>
     <string name="localization">Ubicacion</string>
@@ -25,10 +26,14 @@
     <string name="titleFakeLogin">Ingrese su nombre:</string>
     <string name="pref_cat_setting">Generales</string>
     <string name="switch_night_mode">Modo Oscuro</string>
-    <string name="cargarImagenes">Cargar Imagenes</string>
-    <string name="publicar">Publicar</string>
+    <string name="upload_image">Cargar Imagenes</string>
+    <string name="post">Publicar</string>
     <string name="breed">Raza</string>
-    <string name="filtros">Filtros</string>
+    <string name="dog_data">Datos del Perro</string>
+    <string name="male">Macho</string>
+    <string name="famale">Hembra</string>
+    <string name="description">Descripcion</string>
+    <string name="filter">Filtros</string>
     <string name="age">Edad</string>
     <string name="hintSearch">Ingrese la raza a buscar</string>
 </resources>
