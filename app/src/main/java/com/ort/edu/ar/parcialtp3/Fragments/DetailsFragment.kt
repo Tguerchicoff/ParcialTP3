@@ -81,6 +81,10 @@ class DetailsFragment : Fragment() {
             DogProvider.toggleFavoriteStatus(dog)
         }
 
+        if (dog.isAdopted) {
+            adoptButton.visibility = View.GONE
+        }
+
         buttonBack.setOnClickListener {
             bottomAppBar.visibility = View.VISIBLE
             val fragmentManager = (view.context as AppCompatActivity).supportFragmentManager
@@ -123,12 +127,20 @@ class DetailsFragment : Fragment() {
 
     //AGREGO
     private fun showAdoptionConfirmation(dog: Dog) {
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("user_name", "Usuario")
+
+        // Cambiar el dueño del perro al usuario actual
+        dog.caregiversName = userName
+
         val congratulationsMessage = "¡Felicidades! Has adoptado a ${dog.name}."
         Toast.makeText(requireContext(), congratulationsMessage, Toast.LENGTH_LONG).show()
 
-        // Agrego el perro a la lista getAdoptedDogs
+        // Agregar el perro a la lista getAdoptedDogs
         DogProvider.toggleAdoptedStatus(dog)
-        // Elimino el perro de la lista getAllDogs
+
+        // Eliminar el perro de la lista getAllDogs
         DogProvider.removeFromAllDogs(dog)
     }
+
 }
