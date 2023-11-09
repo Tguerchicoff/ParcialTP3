@@ -4,6 +4,6 @@
     style="?android:attr/spinnerDropDownItemStyle"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:textColor="@color/grey"
+    android:textColor="?attr/colorOnSecondary"
     android:fontFamily="@font/poppins_regular"
     android:singleLine="true" />

@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:textAlignment="center"
-    android:textColor="@color/design_default_color_on_secondary"
+    android:textColor="?attr/colorOnSecondary"
     android:fontFamily="@font/poppins_regular"
     android:singleLine="true" />
