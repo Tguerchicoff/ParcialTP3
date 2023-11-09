@@ -10,8 +10,9 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.Services.ActivityServiceApiBuilder
-import com.ort.edu.ar.parcialtp3.entities.Dog
-import com.ort.edu.ar.parcialtp3.entities.Provinces
+import com.ort.edu.ar.parcialtp3.Entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Provinces
+import com.ort.edu.ar.parcialtp3.Services.DogProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

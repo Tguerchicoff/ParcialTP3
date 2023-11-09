@@ -1,7 +1,7 @@
-package com.ort.edu.ar.parcialtp3.Fragments
+package com.ort.edu.ar.parcialtp3.Services
 
-import com.ort.edu.ar.parcialtp3.entities.Dog
-import com.ort.edu.ar.parcialtp3.entities.Provinces
+import com.ort.edu.ar.parcialtp3.Entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Provinces
 
 class DogProvider {
     companion object {

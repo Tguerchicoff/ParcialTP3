@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
-import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Dog
+import com.ort.edu.ar.parcialtp3.Services.DogProvider
 
 class FavouritesFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var dogListAdapter: DogListAdapter

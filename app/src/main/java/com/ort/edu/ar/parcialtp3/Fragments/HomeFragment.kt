@@ -22,9 +22,10 @@ import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.Services.ActivityServiceApiBuilder
-import com.ort.edu.ar.parcialtp3.entities.Sex
-import com.ort.edu.ar.parcialtp3.entities.Provinces
-import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Sex
+import com.ort.edu.ar.parcialtp3.Entities.Provinces
+import com.ort.edu.ar.parcialtp3.Entities.Dog
+import com.ort.edu.ar.parcialtp3.Services.DogProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
