@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:gravity="top"
-    android:background="@color/white"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    >
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -21,7 +20,8 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="250dp">
+            app:cardCornerRadius="250dp"
+            style="@style/NavBackgroundStyle">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="80dp"
@@ -34,7 +34,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="Profile Image"/>
+                    android:contentDescription="Profile Image" />
 
             </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>
@@ -53,7 +53,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="25dp"
             android:text="Hola!"
-            android:textColor="@color/grey"
+            android:textColor="?attr/colorOnSecondary"
             android:textSize="16dp" />
 
         <TextView
@@ -65,7 +65,6 @@
             android:paddingLeft="10dp"
             android:paddingBottom="32dp"
             android:text="Usuario"
-            android:background="@color/white"
             android:textSize="24dp" />
     </LinearLayout>
 
