@@ -23,7 +23,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            style="@style/NavBackgroundStyle"
             android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
@@ -37,8 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-
-                android:background="@color/white">
+                style="@style/NavBackgroundStyle">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/bottom_navigation"
@@ -68,10 +67,9 @@
         android:layout_height="match_parent"
         android:id="@+id/navigation_drawer"
         android:layout_gravity="start"
-        android:background="@color/white"
+        style="@style/NavBackgroundStyle"
         app:itemIconTint="@color/grey"
-        app:itemTextColor="@color/grey"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:itemTextColor="?attr/colorOnSecondary"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/navigation_drawer_menu">
         <LinearLayout
@@ -87,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Log out"
-                android:background="@color/white"/>
+                android:background="@drawable/rounded_button" />
         </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>

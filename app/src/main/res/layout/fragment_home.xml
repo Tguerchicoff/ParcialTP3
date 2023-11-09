@@ -10,11 +10,11 @@
 
     <AutoCompleteTextView
         android:id="@+id/searchView"
+        style="@style/SearchBarFont"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle"
         android:backgroundTint="@color/ligthGrey"
-        style="@style/SearchBarFont"
         android:hint="@string/hintSearch"
         android:imeOptions="actionDone"
         android:inputType="text"
@@ -30,30 +30,30 @@
     <Spinner
         android:id="@+id/spinnerUbicacion"
         style="@style/FilterTitlesStyle"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintWidth_percent="0.28"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="@id/search_icon"
         app:layout_constraintStart_toEndOf="@+id/spinnerSexo"
-        app:layout_constraintStart_toStartOf="@id/filterText3"
-        app:layout_constraintTop_toBottomOf="@+id/filterText3"
-        />
+        app:layout_constraintTop_toBottomOf="@id/filterTitle" />
 
     <Spinner
         android:id="@+id/spinnerSexo"
         style="@style/FilterTitlesStyle"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintWidth_percent="0.28"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerUbicacion"
         app:layout_constraintStart_toEndOf="@+id/spinnerEdad"
-        app:layout_constraintStart_toStartOf="@id/filterText2"
-        app:layout_constraintTop_toBottomOf="@+id/filterText2"
-        />
+        app:layout_constraintTop_toBottomOf="@id/filterTitle"
+         />
 
     <Spinner
         android:id="@+id/spinnerEdad"
         style="@style/FilterTitlesStyle"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintWidth_percent="0.28"
-        app:layout_constraintTop_toBottomOf="@+id/filterText1"
-        app:layout_constraintStart_toStartOf="@+id/searchView"/>
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerSexo"
+        app:layout_constraintStart_toStartOf="@id/filterTitle"
+        app:layout_constraintTop_toBottomOf="@id/filterTitle"
+
+        />
 
 
     <TextView
@@ -62,54 +62,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/grey"
         android:text="@string/filter"
+        android:textColor="@color/grey"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/searchView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        />
-
-    <TextView
-        android:id="@+id/filterText1"
-        style="@style/FilterTitlesStyle"
-        android:text="@string/age"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintStart_toStartOf="@+id/filterTitle"
-        app:layout_constraintTop_toBottomOf="@+id/filterTitle"
-        app:layout_constraintWidth_percent="0.28" />
-
-    <TextView
-        android:id="@+id/filterText2"
-        style="@style/FilterTitlesStyle"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintWidth_percent="0.28"
-        android:text="@string/sex"
-        app:layout_constraintStart_toEndOf="@+id/filterText1"
-        app:layout_constraintTop_toBottomOf="@id/filterTitle"
-        app:layout_constraintWidth_default="wrap"
-        app:layout_constraintEnd_toEndOf="@id/spinnerSexo"/>
-
-    <TextView
-        android:id="@+id/filterText3"
-        style="@style/FilterTitlesStyle"
-        app:layout_constraintDimensionRatio="H,1:0.2"
-        app:layout_constraintWidth_percent="0.28"
-        android:text="@string/localization"
-        app:layout_constraintStart_toEndOf="@+id/filterText2"
-        app:layout_constraintTop_toBottomOf="@id/filterTitle"
-        app:layout_constraintWidth_default="wrap" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_dogs"
         style="@style/RecViewStyle"
         android:layout_marginTop="10dp"
-        app:layout_constraintWidth_percent="0.9"
         app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerEdad"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline3"/>
+        app:layout_constraintWidth_percent="0.9" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -137,21 +106,19 @@
         android:src="@drawable/search_icon"
         android:visibility="visible"
 
-        app:layout_constraintTop_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/searchView"
-        />
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
         android:id="@+id/wipeFilters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Limpiar Filtros"
-        android:textColor="@color/purple"
-        app:layout_constraintBottom_toTopOf="@+id/filterText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintStart_toEndOf="@+id/filterTitle"
+        android:text="@string/limpiar_filtros"
+        android:textColor="@color/purple"
+        app:layout_constraintEnd_toEndOf="@id/search_icon"
+
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 
