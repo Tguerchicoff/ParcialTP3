@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ort.edu.ar.parcialtp3.R
@@ -35,7 +36,7 @@ class ProfileViewModel: ViewModel() {
         } catch (e: FileNotFoundException) {
 //            e.printStackTrace()
             // Si no hay imagen guardada, ponemos la imagen por defecto
-            userProfileImage.value = context.resources.getDrawable(R.drawable.user_logged, context.theme) as Bitmap
+            userProfileImage.value = context.resources.getDrawable(R.drawable.user_logged, context.theme).toBitmap()
         }
     }
 
