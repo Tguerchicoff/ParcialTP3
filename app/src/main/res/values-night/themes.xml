@@ -3,18 +3,26 @@
     <style name="Theme.ParcialTP3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">#673AB7</item>
+        <item name="colorPrimaryVariant">@color/purple_heart</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/green</item>
         <item name="colorSecondaryVariant">@color/green</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="colorTertiary">@color/purple_heart</item>
+        <item name="colorOnTertiary">@color/ligthGrey</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:toolbarStyle">@color/purple_200</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
-        <item name="android:backgroundTint">@color/black</item>
-        <!-- Customize your theme here. -->
+        <item name="android:button">@color/purple</item>
+    </style>
+
+    <style name="ImageBackgroundStyle">
+        <item name="android:src">@drawable/paw_dog_white</item>
+    </style>
+    <style name="NavBackgroundStyle">
+        <item name="android:background">?android:attr/windowBackground</item>
     </style>
 </resources>

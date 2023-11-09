@@ -1,6 +1,5 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.Adapters.DogListAdapter
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
 import com.ort.edu.ar.parcialtp3.R
-import com.ort.edu.ar.parcialtp3.ViewModels.AdoptedViewModel
-import com.ort.edu.ar.parcialtp3.databinding.FragmentAdoptedBinding
-import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Dog
+import com.ort.edu.ar.parcialtp3.Services.DogProvider
 
 class AdoptedFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var dogListAdapter: DogListAdapter
@@ -44,6 +42,12 @@ class AdoptedFragment : Fragment(), OnViewItemClickedListener {
         recDogs.layoutManager = linearLayoutManager
         recDogs.adapter = dogListAdapter
 
+        val textEmptyList = view?.findViewById<TextView>(R.id.textEmptyList)
+        if (dogList.isEmpty()) {
+            textEmptyList?.visibility = View.VISIBLE
+        } else {
+            textEmptyList?.visibility = View.GONE
+        }
     }
 
     override fun onViewItemDetail(dog: Dog) {

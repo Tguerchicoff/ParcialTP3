@@ -342,6 +342,7 @@
         android:layout_height="64dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/btn_adopt"
+        android:textColor="@color/white"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

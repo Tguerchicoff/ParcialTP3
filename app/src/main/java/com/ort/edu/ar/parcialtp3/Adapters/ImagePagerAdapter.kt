@@ -1,11 +1,11 @@
-package com.ort.edu.ar.parcialtp3
+package com.ort.edu.ar.parcialtp3.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.ort.edu.ar.parcialtp3.R
 
 class ImagePagerAdapter (private val imageUrls: List<String?>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 

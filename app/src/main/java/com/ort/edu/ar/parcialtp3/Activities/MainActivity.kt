@@ -3,10 +3,8 @@ package com.ort.edu.ar.parcialtp3.Activities
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,35 +13,31 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomappbar.BottomAppBar
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 import com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment
-import com.ort.edu.ar.parcialtp3.Fragments.DetailsFragment
 import com.ort.edu.ar.parcialtp3.Fragments.FavouritesFragment
 import com.ort.edu.ar.parcialtp3.Fragments.HomeFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ProfileFragment
 import com.ort.edu.ar.parcialtp3.Fragments.PublicationFragment
 import com.ort.edu.ar.parcialtp3.R
+import com.ort.edu.ar.parcialtp3.ViewModels.ProfileViewModel
 import com.ort.edu.ar.parcialtp3.databinding.ActivityMainBinding
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentManager: FragmentManager
+    private lateinit var profileViewModel: ProfileViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
 
         updateNavHeader()
         setSupportActionBar(binding.toolbar)
@@ -82,11 +76,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun updateToolbarAndNavHeader(fragment: Fragment) {
         when (fragment) {
-            is HomeFragment -> supportActionBar?.title = "Inicio"
-            is PublicationFragment -> supportActionBar?.title = "Publicación"
-            is AdoptedFragment -> supportActionBar?.title = "Adoptados"
-            is FavouritesFragment -> supportActionBar?.title = "Favoritos"
-            is ProfileFragment -> supportActionBar?.title = "Perfil"
+            is HomeFragment -> supportActionBar?.title = getString(R.string.fragment_home)
+            is PublicationFragment -> supportActionBar?.title = getString(R.string.fragment_publication)
+            is AdoptedFragment -> supportActionBar?.title = getString(R.string.fragment_adopted)
+            is FavouritesFragment -> supportActionBar?.title = getString(R.string.fragment_favourites)
+            is ProfileFragment -> supportActionBar?.title = getString(R.string.fragment_profile)
+            is ConfigurationFragment -> supportActionBar?.title = getString(R.string.fragment_configuration)
             else -> supportActionBar?.title = ""
         }
         updateNavHeader() // Actualizar el nombre en el encabezado de navegación
@@ -134,25 +129,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Configura el nombre del usuario en el TextView del nav_header
         textViewName.text = userName
 
-        loadImageFromStorage(padding)
-    }
-
-    public fun loadImageFromStorage(imageView: ImageView) {
-        // https://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
-
-        try {
-            val cw = ContextWrapper(this)
-            // path to /data/data/yourapp/app_data/imageDir
-            val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
-            val f = File(directory, "profile.jpg")
-            val b = BitmapFactory.decodeStream(FileInputStream(f))
-
-            imageView.setImageBitmap(b)
-        } catch (e: FileNotFoundException) {
-//            e.printStackTrace()
-            // Si no hay imagen guardada, ponemos la imagen por defecto
-            imageView.setImageResource(R.drawable.user_logged)
+        profileViewModel.getUserImage().observe(this) { bitmap ->
+            padding.setImageBitmap(bitmap)
         }
+
+        profileViewModel.fetchUserProfileImage(this)
     }
 
     private fun handleLogout() {
