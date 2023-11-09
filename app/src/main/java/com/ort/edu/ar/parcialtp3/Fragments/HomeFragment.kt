@@ -58,21 +58,21 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         val ageValues = (1..20).map { it.toString() }.toMutableList()
 
 
-        genderValues.add(0, "TODOS")
-        val genderAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genderValues)
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        genderValues.add(0, "Sexo")
+        val genderAdapter = ArrayAdapter(requireContext(), R.layout.item_spinner, genderValues)
+        genderAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown)
         genderSpinner.adapter = genderAdapter
         genderSpinner.setSelection(0)
 
-        provinceValues.add(0, "TODOS")
-        val provinceAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, provinceValues)
-        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        provinceValues.add(0, "Zona")
+        val provinceAdapter = ArrayAdapter(requireContext(), R.layout.item_spinner, provinceValues)
+        provinceAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown)
         provinceSpinner.adapter = provinceAdapter
         provinceSpinner.setSelection(0)
 
-        ageValues.add(0, "TODOS")
-        val ageAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, ageValues)
-        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ageValues.add(0, "Edad")
+        val ageAdapter = ArrayAdapter(requireContext(), R.layout.item_spinner, ageValues)
+        ageAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown)
         ageSpinner.adapter = ageAdapter
         ageSpinner.setSelection(0)
 

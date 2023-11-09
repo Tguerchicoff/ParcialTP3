@@ -36,4 +36,5 @@
     <string name="filter">Filtros</string>
     <string name="age">Edad</string>
     <string name="hintSearch">Buscador</string>
+    <string name="limpiar_filtros">Limpiar Filtros</string>
 </resources>
