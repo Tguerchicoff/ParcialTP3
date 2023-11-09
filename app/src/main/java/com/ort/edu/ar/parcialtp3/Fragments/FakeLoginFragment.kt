@@ -48,7 +48,8 @@ class FakeLoginFragment : Fragment() {
                 requireActivity().finish()
             } else {
                 // Mostrar un mensaje de error si el nombre está vacío
-                Toast.makeText(requireContext(), "Por favor, ingrese un nombre", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.toast_empty_name), Toast.LENGTH_SHORT).show()
+
             }
         }
         return root

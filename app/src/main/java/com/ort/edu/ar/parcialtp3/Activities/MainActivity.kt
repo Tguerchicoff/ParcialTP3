@@ -75,12 +75,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun updateToolbarAndNavHeader(fragment: Fragment) {
         when (fragment) {
-            is HomeFragment -> supportActionBar?.title = "Inicio"
-            is PublicationFragment -> supportActionBar?.title = "Publicación"
-            is AdoptedFragment -> supportActionBar?.title = "Adoptados"
-            is FavouritesFragment -> supportActionBar?.title = "Favoritos"
-            is ProfileFragment -> supportActionBar?.title = "Perfil"
-            is ConfigurationFragment -> supportActionBar?.title = "Configuracion"
+            is HomeFragment -> supportActionBar?.title = getString(R.string.fragment_home)
+            is PublicationFragment -> supportActionBar?.title = getString(R.string.fragment_publication)
+            is AdoptedFragment -> supportActionBar?.title = getString(R.string.fragment_adopted)
+            is FavouritesFragment -> supportActionBar?.title = getString(R.string.fragment_favourites)
+            is ProfileFragment -> supportActionBar?.title = getString(R.string.fragment_profile)
+            is ConfigurationFragment -> supportActionBar?.title = getString(R.string.fragment_configuration)
             else -> supportActionBar?.title = ""
         }
         updateNavHeader() // Actualizar el nombre en el encabezado de navegación
