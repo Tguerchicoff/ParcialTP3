@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,15 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.navigation.NavigationView
 import com.ort.edu.ar.parcialtp3.Fragments.AdoptedFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment
-import com.ort.edu.ar.parcialtp3.Fragments.DetailsFragment
 import com.ort.edu.ar.parcialtp3.Fragments.FavouritesFragment
 import com.ort.edu.ar.parcialtp3.Fragments.HomeFragment
 import com.ort.edu.ar.parcialtp3.Fragments.ProfileFragment
@@ -87,6 +80,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             is AdoptedFragment -> supportActionBar?.title = "Adoptados"
             is FavouritesFragment -> supportActionBar?.title = "Favoritos"
             is ProfileFragment -> supportActionBar?.title = "Perfil"
+            is ConfigurationFragment -> supportActionBar?.title = "Configuracion"
             else -> supportActionBar?.title = ""
         }
         updateNavHeader() // Actualizar el nombre en el encabezado de navegación

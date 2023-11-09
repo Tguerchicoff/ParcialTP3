@@ -15,6 +15,10 @@
         <item name="android:toolbarStyle">@color/purple_200</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:backgroundTint">@color/black</item>
-        <!-- Customize your theme here. -->
+        <item name="android:button">@color/purple</item>
+    </style>
+
+    <style name="ImageBackgroundStyle">
+        <item name="android:src">@drawable/paw_dog_white</item>
     </style>
 </resources>

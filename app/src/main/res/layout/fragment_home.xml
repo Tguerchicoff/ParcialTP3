@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle"
+        android:backgroundTint="@color/ligthGrey"
         style="@style/SearchBarFont"
         android:hint="@string/hintSearch"
         android:imeOptions="actionDone"
@@ -44,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@+id/spinnerEdad"
         app:layout_constraintStart_toStartOf="@id/filterText2"
         app:layout_constraintTop_toBottomOf="@+id/filterText2"
-    />
+        />
 
     <Spinner
         android:id="@+id/spinnerEdad"
@@ -62,7 +63,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/grey"
-        android:text="@string/filtros"
+        android:text="@string/filter"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/searchView"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
@@ -125,7 +126,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_end="?attr/actionBarSize" />
 
-         />
+    />
 
 
     <ImageView
@@ -140,7 +141,18 @@
         app:layout_constraintEnd_toEndOf="@+id/searchView"
         />
 
+    <TextView
+        android:id="@+id/wipeFilters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limpiar Filtros"
+        android:textColor="@color/purple"
+        app:layout_constraintBottom_toTopOf="@+id/filterText3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toEndOf="@+id/filterTitle"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

@@ -15,7 +15,10 @@
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:toolbarStyle">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
-
+        <item name="android:button">@color/purple</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="ImageBackgroundStyle">
+        <item name="android:src">@drawable/paw_dog_black</item>
     </style>
 </resources>
