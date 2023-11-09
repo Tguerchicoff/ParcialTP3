@@ -44,6 +44,12 @@ class AdoptedFragment : Fragment(), OnViewItemClickedListener {
         recDogs.layoutManager = linearLayoutManager
         recDogs.adapter = dogListAdapter
 
+        val textEmptyList = view?.findViewById<TextView>(R.id.textEmptyList)
+        if (dogList.isEmpty()) {
+            textEmptyList?.visibility = View.VISIBLE
+        } else {
+            textEmptyList?.visibility = View.GONE
+        }
     }
 
     override fun onViewItemDetail(dog: Dog) {

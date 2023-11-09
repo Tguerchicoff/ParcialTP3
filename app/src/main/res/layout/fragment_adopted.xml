@@ -9,15 +9,30 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_dogs"
         style="@style/RecViewStyle"
-        app:layout_constraintDimensionRatio="H,1:1.9"
-        app:layout_constraintWidth_percent="0.9"
+        android:layout_marginTop="35dp"
         android:foregroundGravity="center"
         app:data="@{AdoptedFragment}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="H,1:1.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <TextView
+        android:id="@+id/textEmptyList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="@string/emptyAdoptList"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
