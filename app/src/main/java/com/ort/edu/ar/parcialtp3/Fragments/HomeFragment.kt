@@ -54,7 +54,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
         searchView = view.findViewById(R.id.searchView)
 
         val genderValues = Sex.values().map { it.name }.toMutableList()
-        val provinceValues = Provinces.values().map { it.name }.toMutableList()
+        val provinceValues = Provinces.values().map { it.formattedName }.toMutableList()
         val ageValues = (1..20).map { it.toString() }.toMutableList()
 
 

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.ort.edu.ar.parcialtp3.R
 import com.ort.edu.ar.parcialtp3.Services.ActivityServiceApiBuilder
 import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.entities.Provinces
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -65,8 +66,8 @@ class PublicationFragment : Fragment() {
 
 
         val locations = DogProvider.getLocations()
-        val locationAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, locations)
-        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val locationAdapter = ArrayAdapter(requireContext(), R.layout.item_publication_spinner, Provinces.values().map { it.formattedName })
+        locationAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown)
 
 
         locationSpinner.adapter = locationAdapter
@@ -183,10 +184,10 @@ class PublicationFragment : Fragment() {
                     breedList.add(0, "Raza")
                     val breedAdapter = ArrayAdapter(
                         requireContext(),
-                        android.R.layout.simple_spinner_item,
+                        R.layout.item_publication_spinner,
                         breedList
                     )
-                    breedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    breedAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown)
 
 
                     requireActivity().runOnUiThread {
@@ -211,7 +212,7 @@ class PublicationFragment : Fragment() {
                                         subBreedList.addAll(subBreeds)
                                         val subBreedAdapter = ArrayAdapter(
                                             requireContext(),
-                                            android.R.layout.simple_spinner_item,
+                                            R.layout.item_publication_spinner,
                                             subBreedList
                                         )
                                         subBreedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

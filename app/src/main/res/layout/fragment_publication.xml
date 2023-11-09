@@ -47,13 +47,16 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog" />
+                    android:spinnerMode="dialog"
+                    />
 
                 <Spinner
                     android:id="@+id/spinner_subraza"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+
+                   />
 
             </LinearLayout>
 
@@ -86,13 +89,15 @@
                     android:id="@+id/radio_macho"
                     android:layout_width="141dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/male" />
+                    android:text="@string/male"
+                    android:fontFamily="@font/poppins_regular"/>
 
                 <RadioButton
                     android:id="@+id/radio_hembra"
                     android:layout_width="152dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/famale" />
+                    android:text="@string/famale"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </RadioGroup>
 
@@ -100,7 +105,8 @@
                 android:id="@+id/spinner_ubicacion"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:spinnerMode="dialog" />
+                android:spinnerMode="dialog"
+            />
 
             <EditText
                 android:id="@+id/edit_text_descripcion"
