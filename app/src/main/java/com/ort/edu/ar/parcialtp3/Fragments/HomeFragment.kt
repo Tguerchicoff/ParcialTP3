@@ -1,5 +1,6 @@
 package com.ort.edu.ar.parcialtp3.Fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -37,6 +39,7 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
     private lateinit var provinceSpinner: Spinner
     private lateinit var searchView: AutoCompleteTextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -128,6 +131,16 @@ class HomeFragment : Fragment(), OnViewItemClickedListener {
                 filterAndRefreshList()
             }
         })
+
+        val clearFiltersTextView = view.findViewById<TextView>(R.id.wipeFilters)
+        clearFiltersTextView.setOnClickListener {
+            // Limpiar los filtros
+            genderSpinner.setSelection(0) // Restablece el Spinner de género
+            provinceSpinner.setSelection(0) // Restablece el Spinner de provincia
+            ageSpinner.setSelection(0) // Restablece el Spinner de edad
+            searchView.text.clear() // Limpia el contenido del SearchView
+            filterAndRefreshList()
+            }
 
         return view
     }
