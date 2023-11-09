@@ -32,6 +32,7 @@ class PublicationFragment : Fragment() {
     private lateinit var loading1: ProgressBar
     private lateinit var loading2: ProgressBar
     private lateinit var loading3: ProgressBar
+    private var searched = false
 
     private var breedList: MutableList<String> = mutableListOf()
     private val subBreedList: MutableList<String> = mutableListOf()
@@ -86,6 +87,7 @@ class PublicationFragment : Fragment() {
 
         val btnCargarImg = root.findViewById<Button>(R.id.btn_cargar_img)
         btnCargarImg.setOnClickListener {
+            searched = true
             if(breedSpinner.selectedItemPosition > 0){
                 dogImagesList.clear()
                 showLoaders(true)
@@ -105,7 +107,7 @@ class PublicationFragment : Fragment() {
             val ubicacion = locationSpinner.selectedItem.toString()
             val genero = generoSeleccionado ?: "Desconocido"
 
-            if (nombre.isNotEmpty() && edadText.isNotEmpty() && pesoText.isNotEmpty() && descripcion.isNotEmpty() && ubicacion.isNotEmpty()) {
+            if (nombre.isNotEmpty() && edadText.isNotEmpty() && pesoText.isNotEmpty() && descripcion.isNotEmpty() && ubicacion.isNotEmpty() && searched){
                 try {
                     val edad = edadText.toInt()
                     val peso = pesoText.toDouble()
@@ -172,7 +174,6 @@ class PublicationFragment : Fragment() {
     private fun listDogBreeds() {
         GlobalScope.launch(Dispatchers.IO) {
             val response = dogApiService.getBreeds().execute()
-
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
