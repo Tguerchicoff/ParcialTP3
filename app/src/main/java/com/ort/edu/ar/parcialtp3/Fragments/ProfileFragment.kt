@@ -94,7 +94,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveToInternalStorage(bitmapImage: Bitmap): String? {
-        // https://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
 
         val cw = ContextWrapper(this.context)
         // path to /data/data/yourapp/app_data/imageDir

@@ -39,4 +39,12 @@
     <string name="emptyFavList">Aún no tienes favoritos</string>
     <string name="emptyAdoptList">Aún no tienes perros adoptados. Que estás esperando??? </string>
     <string name="limpiar_filtros">Limpiar Filtros</string>
+    <string name="emptyHomeList">Actualmente no hay perros disponibles para adopción, pero no dejes de visitarnos. ¡Nuevos amigos peludos llegarán pronto!</string>
+    <string name="fragment_home">Inicio</string>
+    <string name="fragment_publication">Publicación</string>
+    <string name="fragment_adopted">Adoptados</string>
+    <string name="fragment_favourites">Favoritos</string>
+    <string name="fragment_profile">Perfil</string>
+    <string name="fragment_configuration">Configuración</string>
+    <string name="toast_empty_name">Por favor, ingrese un nombre</string>
 </resources>
