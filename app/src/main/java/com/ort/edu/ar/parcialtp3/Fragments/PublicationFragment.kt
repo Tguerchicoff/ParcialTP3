@@ -87,8 +87,9 @@ class PublicationFragment : Fragment() {
 
         val btnCargarImg = root.findViewById<Button>(R.id.btn_cargar_img)
         btnCargarImg.setOnClickListener {
-            searched = true
+
             if(breedSpinner.selectedItemPosition > 0){
+                searched = true
                 dogImagesList.clear()
                 showLoaders(true)
                 getDogsImages()
