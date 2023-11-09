@@ -33,7 +33,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.ort.edu.ar.parcialtp3.Fragments.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/configurationFragment"
         android:name="com.ort.edu.ar.parcialtp3.Fragments.ConfigurationFragment"

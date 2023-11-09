@@ -32,12 +32,14 @@
 
         <TextView
             android:id="@+id/txtCardName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_vriable"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            tools:text="Nombre" />
+            tools:text="Nombre"
+            style="@style/ShadowStyle"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,17 +48,20 @@
 
             <ImageView
                 android:id="@+id/imgCards1"
-                android:layout_width="24dp"
+                android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/dog_paw" />
+                android:src="@drawable/dog_paw"
+                />
 
             <TextView
                 android:id="@+id/txtCardBreed"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_regular"
                 android:textSize="15sp"
                 android:textColor="#FFFFFF"
-                tools:text="Raza" />
+                tools:text="Raza"
+                style="@style/ShadowStyle"/>
 
         </LinearLayout>
 
@@ -73,11 +78,13 @@
 
             <TextView
                 android:id="@+id/txtCardSubBreed"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_regular"
                 android:textSize="15sp"
                 android:textColor="#FFFFFF"
-                tools:text="SubRaza" />
+                tools:text="SubRaza"
+                style="@style/ShadowStyle"/>
 
         </LinearLayout>
 
@@ -95,9 +102,11 @@
                 android:id="@+id/txtCardAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:fontFamily="@font/quicksand_regular"
                 android:textColor="#FFFFFF"
-                tools:text="Edad" />
+                android:textSize="17sp"
+                tools:text="Edad"
+                style="@style/ShadowStyle"/>
 
             <Space
                 android:layout_width="8dp"
@@ -108,8 +117,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
+                android:fontFamily="@font/quicksand_regular"
                 android:textColor="#FFFFFF"
-                tools:text="Macho o Hembra" />
+                tools:text="Macho o Hembra"
+                style="@style/ShadowStyle"/>
         </LinearLayout>
 
     </LinearLayout>

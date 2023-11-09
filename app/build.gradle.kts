@@ -69,8 +69,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
-    //Corrutinas
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    //BORRAR
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     //dagger hilt
     implementation("com.google.dagger:hilt-android:2.44")
@@ -115,6 +116,12 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
 
+    // AGREGO PARA ViewPager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    implementation("com.android.volley:volley:1.2.0")
+    implementation("com.google.code.gson:gson:2.8.8")
 }
 
 kapt {

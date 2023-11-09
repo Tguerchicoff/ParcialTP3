@@ -11,14 +11,40 @@
     <string name="config_fragment">Configuracion</string>
     <string name="nav_open">Abierto</string>
     <string name="nav_close">Cerrado</string>
+    <string name="btn_adopt">Adoptar</string>
+    <string name="sex">Sexo</string>
+    <string name="peso">Peso</string>
+    <string name="wight_kg">Peso (kg)</string>
+    <string name="name">Nombre</string>
+    <string name="old">Edad</string>
+    <string name="localization">Ubicacion</string>
+    <string name="owner">Dueño</string>
     <string name="btnWelcome">Comenzar Ahora!</string>
     <string name="btnUploadPhoto">Subir Foto</string>
     <string name="titleWelcome">Adopción de Perritos</string>
     <string name="textWelcome">Haz tu vida más feliz con nuestra ayuda para tener nuevas mascotas</string>
     <string name="titleFakeLogin">Ingrese su nombre:</string>
-    <string name="name">Nombre</string>
     <string name="pref_cat_setting">Generales</string>
     <string name="switch_night_mode">Modo Oscuro</string>
-
-
+    <string name="upload_image">Cargar Imagenes</string>
+    <string name="post">Publicar</string>
+    <string name="breed">Raza</string>
+    <string name="dog_data">Datos del Perro</string>
+    <string name="male">Macho</string>
+    <string name="famale">Hembra</string>
+    <string name="description">Descripcion</string>
+    <string name="filter">Filtros</string>
+    <string name="age">Edad</string>
+    <string name="hintSearch">Buscador</string>
+    <string name="emptyFavList">Aún no tienes favoritos</string>
+    <string name="emptyAdoptList">Aún no tienes perros adoptados. Que estás esperando??? </string>
+    <string name="limpiar_filtros">Limpiar Filtros</string>
+    <string name="emptyHomeList">Actualmente no hay perros disponibles para adopción, pero no dejes de visitarnos. ¡Nuevos amigos peludos llegarán pronto!</string>
+    <string name="fragment_home">Inicio</string>
+    <string name="fragment_publication">Publicación</string>
+    <string name="fragment_adopted">Adoptados</string>
+    <string name="fragment_favourites">Favoritos</string>
+    <string name="fragment_profile">Perfil</string>
+    <string name="fragment_configuration">Configuración</string>
+    <string name="toast_empty_name">Por favor, ingrese un nombre</string>
 </resources>
