@@ -2,7 +2,9 @@ package com.ort.edu.ar.parcialtp3.Fragments
 
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -11,16 +13,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.ort.edu.ar.parcialtp3.Activities.MainActivity
-import com.ort.edu.ar.parcialtp3.ViewModels.ProfileViewModel
 import com.ort.edu.ar.parcialtp3.databinding.FragmentProfileBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 
 class ProfileFragment : Fragment() {
 
     private lateinit var _binding: FragmentProfileBinding
-    private lateinit var profileViewModel: ProfileViewModel
+//    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,26 +45,14 @@ class ProfileFragment : Fragment() {
             resultLauncher.launch(chooseFile)
         }
 
-        profileViewModel = ViewModelProvider(this.activity as MainActivity)[ProfileViewModel::class.java]
-
         if (this.activity is MainActivity) {
             val mainActivity : MainActivity = activity as MainActivity
-
+            mainActivity.loadImageFromStorage(_binding.imViewProfile)
             val sharedPreferences = mainActivity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             _binding.tvProfilename.setText(sharedPreferences.getString("user_name", ""))
         }
 
         return _binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        profileViewModel.getUserImage().observe(requireActivity()) { bitmap ->
-            _binding.imViewProfile.setImageBitmap(bitmap)
-        }
-
-        profileViewModel.fetchUserProfileImage(requireActivity().baseContext)
     }
 
 
@@ -73,9 +64,59 @@ class ProfileFragment : Fragment() {
             data?.let {
                 val imageUri = Uri.parse(data.data.toString())
 
+                _binding.imViewProfile.setImageURI(imageUri)
+
                 // TODO: check deprecated
-                profileViewModel.updateUserProfileImage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri), requireActivity().baseContext)
+                saveToInternalStorage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri))
+
+                // TODO: viewmodel also will update MainActivity nav_header
+                if (this.activity is MainActivity) {
+                    val mainActivity : MainActivity = activity as MainActivity
+                    mainActivity.loadImageFromStorage(_binding.imViewProfile)
+                }
+
+//                // TODO: Check extension
+//                val toCheckTypes = imageUri.toFile().absoluteFile.toString().split("/")
+//                if (toCheckTypes.isNotEmpty()) {
+//                    val filename = toCheckTypes[toCheckTypes.size-1]
+//                    val extension = filename.drop(filename.lastIndexOf("."))
+//
+//                    println("extension $extension")
+//
+//                    if (listOf("JPG", "jpg", "JPEG", "jpeg", "PNG", "png").contains(extension)) {
+//                        _binding.imViewProfile.setImageURI(imageUri)
+//                        saveToInternalStorage(MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri))
+//                    }
+//                }
+
             }
         }
     }
+
+    private fun saveToInternalStorage(bitmapImage: Bitmap): String? {
+
+        val cw = ContextWrapper(this.context)
+        // path to /data/data/yourapp/app_data/imageDir
+        val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
+        // Create imageDir
+        val mypath = File(directory, "profile.jpg")
+        var fos: FileOutputStream? = null
+
+        try {
+            fos = FileOutputStream(mypath)
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                fos!!.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+
+        return directory.absolutePath
+    }
+
 }
