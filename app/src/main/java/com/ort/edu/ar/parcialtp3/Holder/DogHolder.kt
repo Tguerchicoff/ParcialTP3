@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.ort.edu.ar.parcialtp3.R
 import com.bumptech.glide.Glide
-import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Dog
 
 class DogHolder (v: View) : RecyclerView.ViewHolder(v) {
     private var view: View

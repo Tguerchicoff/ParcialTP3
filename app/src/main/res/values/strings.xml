@@ -37,7 +37,7 @@
     <string name="age">Edad</string>
     <string name="hintSearch">Buscador</string>
     <string name="emptyFavList">Aún no tienes favoritos</string>
-    <string name="emptyAdoptList">Aún no tienes perros adoptados. Que estás esperando??? </string>
+    <string name="emptyAdoptList">Aún no tienes perros adoptados. ¿Que estás esperando?</string>
     <string name="limpiar_filtros">Limpiar Filtros</string>
     <string name="emptyHomeList">Actualmente no hay perros disponibles para adopción, pero no dejes de visitarnos. ¡Nuevos amigos peludos llegarán pronto!</string>
     <string name="fragment_home">Inicio</string>

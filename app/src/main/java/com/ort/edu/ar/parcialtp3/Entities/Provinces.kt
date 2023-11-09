@@ -1,4 +1,4 @@
-package com.ort.edu.ar.parcialtp3.entities
+package com.ort.edu.ar.parcialtp3.Entities
 
 enum class Provinces(val formattedName: String) {
         BUENOS_AIRES("Buenos Aires"),

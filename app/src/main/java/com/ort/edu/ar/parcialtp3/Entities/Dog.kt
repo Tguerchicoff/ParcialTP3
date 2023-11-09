@@ -1,7 +1,5 @@
-package com.ort.edu.ar.parcialtp3.entities
+package com.ort.edu.ar.parcialtp3.Entities
 
-import android.os.Parcel
-import android.os.Parcelable
 import java.io.Serializable
 
 

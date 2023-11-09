@@ -1,14 +1,11 @@
 package com.ort.edu.ar.parcialtp3.Adapters
 
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ort.edu.ar.parcialtp3.Fragments.DogProvider.Companion.dogList
 import com.ort.edu.ar.parcialtp3.Holder.DogHolder
 import com.ort.edu.ar.parcialtp3.Listener.OnViewItemClickedListener
-import com.ort.edu.ar.parcialtp3.entities.Dog
+import com.ort.edu.ar.parcialtp3.Entities.Dog
 import com.ort.edu.ar.parcialtp3.R
 
 class DogListAdapter(private val dogsList: MutableList<Dog> = mutableListOf(), private val onItemClick: OnViewItemClickedListener,
