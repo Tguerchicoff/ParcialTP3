@@ -36,4 +36,6 @@
     <string name="filter">Filtros</string>
     <string name="age">Edad</string>
     <string name="hintSearch">Buscador</string>
+    <string name="emptyFavList">Aún no tienes favoritos</string>
+    <string name="emptyAdoptList">Aún no tienes perros adoptados. Que estás esperando??? </string>
 </resources>
